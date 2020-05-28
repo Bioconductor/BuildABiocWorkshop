@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An Example Workshop • BuildABiocWorkshop2020</title>
+<title>How To Build A Workshop Package • BuildABiocWorkshop2020</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="An Example Workshop">
+<script src="../pkgdown.js"></script><meta property="og:title" content="How To Build A Workshop Package">
 <meta property="og:description" content="BuildABiocWorkshop2020">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -88,121 +88,92 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>An Example Workshop</h1>
+      <h1 data-toc-skip>How To Build A Workshop Package</h1>
+            <h3 class="subtitle">In other words, how do I use what’s here</h3>
                         <h4 class="author">Sean Davis<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
 </h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop2020/blob/master/vignettes/workshop_example.Rmd"><code>vignettes/workshop_example.Rmd</code></a></small>
-      <div class="hidden name"><code>workshop_example.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop2020/blob/master/vignettes/HOWTO_BUILD_WORKSHOP.Rmd"><code>vignettes/HOWTO_BUILD_WORKSHOP.Rmd</code></a></small>
+      <div class="hidden name"><code>HOWTO_BUILD_WORKSHOP.Rmd</code></div>
 
     </div>
 
     
     
-<div id="workshop-title" class="section level1">
-<h1 class="hasAnchor">
-<a href="#workshop-title" class="anchor"></a>Workshop Title</h1>
-<p>Authors: Author Name<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, Another Author<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. <br> Last modified: 14 May, 2018.</p>
-<div id="overview" class="section level2">
+<p>First, this package doesn’t do much except add a template Github Action to build all the pieces necessary for a workshop.</p>
+<div id="quickstart" class="section level2">
 <h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<div id="description" class="section level3">
-<h3 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h3>
-<p>Along with the topic of your workshop, include how students can expect to spend their time. For the description may also include information about what type of workshop it is (e.g. instructor-led live demo, lab, lecture + lab, etc.). Instructors are strongly recommended to provide completely worked examples for lab sessions, and a set of stand-alone notes that can be read and understood outside of the workshop.</p>
-</div>
-<div id="pre-requisites" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pre-requisites" class="anchor"></a>Pre-requisites</h3>
-<p>List any workshop prerequisites, for example:</p>
+<a href="#quickstart" class="anchor"></a>Quickstart</h2>
 <ul>
-<li>Basic knowledge of R syntax</li>
-<li>Familiarity with the GenomicRanges class</li>
-<li>Familiarity with xyz vignette (provide link)</li>
+<li>[ ] Clone this repo, fork and rename it, or create a repo from this template</li>
+<li>[ ] Edit <code>DESCRIPTION</code> file
+<ul>
+<li>[ ] Change package name</li>
+<li>[ ] Change title and description</li>
+<li>[ ] Change authors</li>
+<li>[ ] Check dependencies</li>
+<li>[ ] Change DockerImage tag</li>
 </ul>
-<p>List relevant background reading for the workshop, including any theoretical background you expect students to have.</p>
-<ul>
-<li>List any textbooks, papers, or other reading that students should be familiar with. Include direct links where possible.</li>
+</li>
+<li>[ ] Edit <code>.github/workflows/basic_checks.yaml</code>
+</li>
+<li>[ ] Write a normal R package that can be installed</li>
+<li>[ ] Include one or more vignettes that will constitute the workshop materials</li>
 </ul>
 </div>
-<div id="participation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#participation" class="anchor"></a>Participation</h3>
-<p>Describe how students will be expected to participate in the workshop.</p>
-</div>
-<div id="r-bioconductor-packages-used" class="section level3">
-<h3 class="hasAnchor">
-<a href="#r-bioconductor-packages-used" class="anchor"></a><em>R</em> / <em>Bioconductor</em> packages used</h3>
-<p>List any <em>R</em> / <em>Bioconductor</em> packages that will be explicitly covered.</p>
-</div>
-<div id="time-outline" class="section level3">
-<h3 class="hasAnchor">
-<a href="#time-outline" class="anchor"></a>Time outline</h3>
-<p>An example for a 45-minute workshop:</p>
-<table class="table">
-<thead><tr class="header">
-<th>Activity</th>
-<th>Time</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Packages</td>
-<td>15m</td>
-</tr>
-<tr class="even">
-<td>Package Development</td>
-<td>15m</td>
-</tr>
-<tr class="odd">
-<td>Contributing to Bioconductor</td>
-<td>5m</td>
-</tr>
-<tr class="even">
-<td>Best Practices</td>
-<td>10m</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="workshop-goals-and-objectives" class="section level3">
-<h3 class="hasAnchor">
-<a href="#workshop-goals-and-objectives" class="anchor"></a>Workshop goals and objectives</h3>
-<p>List “big picture” student-centered workshop goals and learning objectives. Learning goals and objectives are related, but not the same thing. These goals and objectives will help some people to decide whether to attend the conference for training purposes, so please make these as precise and accurate as possible.</p>
-<p><em>Learning goals</em> are high-level descriptions of what participants will learn and be able to do after the workshop is over. <em>Learning objectives</em>, on the other hand, describe in very specific and measurable terms specific skills or knowledge attained. The <a href="#bloom">Bloom’s Taxonomy</a> may be a useful framework for defining and describing your goals and objectives, although there are others.</p>
-</div>
-<div id="learning-goals" class="section level3">
-<h3 class="hasAnchor">
-<a href="#learning-goals" class="anchor"></a>Learning goals</h3>
-<p>Some examples:</p>
-<ul>
-<li>describe how to…</li>
-<li>identify methods for…</li>
-<li>understand the difference between…</li>
-</ul>
-</div>
-<div id="learning-objectives" class="section level3">
-<h3 class="hasAnchor">
-<a href="#learning-objectives" class="anchor"></a>Learning objectives</h3>
-<ul>
-<li>analyze xyz data to produce…</li>
-<li>create xyz plots</li>
-<li>evaluate xyz data for artifacts</li>
-</ul>
-</div>
-</div>
-<div id="workshop" class="section level2">
+<div id="details" class="section level2">
 <h2 class="hasAnchor">
-<a href="#workshop" class="anchor"></a>Workshop</h2>
-<p>Divide the workshop into sections (<code>## A Section</code>). Include fully-evaluated <em>R</em> code chunks. Develop exercises and solutions, and anticipate that your audience will walk through the code with you, or work on the code idependently – do not be too ambitious in the material that you present.</p>
+<a href="#details" class="anchor"></a>Details</h2>
+<div id="clone-this-repo" class="section level3">
+<h3 class="hasAnchor">
+<a href="#clone-this-repo" class="anchor"></a>Clone this repo</h3>
+<pre><code>git clone https://github.com/seandavi/BuildABiocWorkshop2020 MYPKGDIR</code></pre>
+</div>
+<div id="edit-description-file" class="section level3">
+<h3 class="hasAnchor">
+<a href="#edit-description-file" class="anchor"></a>Edit <code>DESCRIPTION</code> file</h3>
+<ul>
+<li>Change the package name to something identifiable and descriptive, ideally something that will be somewhat unique.</li>
+<li>Edit the title and description as per any normal R package.</li>
+<li>Update authors (unless you want me to get credit for your work).</li>
+<li>Workshop packages are normal R packages, so dependencies work as usual. If you are going to depend on something on github, be sure to specify the correct repo <code>username/reponame</code>. Installation will deal with this.</li>
+</ul>
+</div>
+<div id="edit--githubworkflowsbasic_checks-yaml" class="section level3">
+<h3 class="hasAnchor">
+<a href="#edit--githubworkflowsbasic_checks-yaml" class="anchor"></a>Edit <code>.github/workflows/basic_checks.yaml</code>
+</h3>
+<p><strong>You MUST change the <code>repository</code> line in this yaml file to be YOUR desired Docker image name</strong>. In other words, this section of the github actions file will build and push to dockerhub the image with this name.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" data-line-number="1">     <span class="kw">-</span> <span class="fu">uses:</span><span class="at"> docker/build-push-action@v1</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">        <span class="fu">with:</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">          <span class="fu">username:</span><span class="at"> ${{ secrets.DOCKER_USERNAME }}</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">          <span class="fu">password:</span><span class="at"> ${{ secrets.DOCKER_PASSWORD }}</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">          <span class="co"># change the next line to reflect the name</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">          <span class="co"># of YOUR dockerhub repository</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">          <span class="fu">repository:</span><span class="at"> seandavi/buildabiocworkshop2020</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">          <span class="fu">tag_with_ref:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">          <span class="fu">tag_with_sha:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">          <span class="fu">tags:</span><span class="at"> latest</span></a></code></pre></div>
+</div>
+<div id="add-secrets-to-github-repo" class="section level3">
+<h3 class="hasAnchor">
+<a href="#add-secrets-to-github-repo" class="anchor"></a>Add “secrets” to github repo</h3>
+<p>Secrets are encrypted environment variables that you create in a repository or organization. The secrets you create are available to use in GitHub Actions workflows. GitHub uses a libsodium sealed box to help ensure that secrets are encrypted before they reach GitHub, and remain encrypted until you use them in a workflow.</p>
+<p>See <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Creating and storing encrypted secrets</a></p>
+<ul>
+<li>
+<code>DOCKER_USERNAME</code>: your dockerhub username; create a dockerhub account if you do not have one</li>
+<li>
+<code>DOCKER_PASSWORD</code>: your dockerhub password</li>
+<li>Github <code>ACCESS_TOKEN</code>: a <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">github personal access token</a>. Make sure that your personal access token contains <code>repo</code> permissions (all of them).</li>
+</ul>
 </div>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
 <li id="fn1"><p><a href="mailto:seandavi@gmail.com" class="email">seandavi@gmail.com</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Institution<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>Another Institution<a href="#fnref3" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
   </div>
