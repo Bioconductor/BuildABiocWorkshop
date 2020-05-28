@@ -24,4 +24,4 @@ Suggests:
     pkgdown
 Url: https://seandavi.github.io/BuildABiocWorkshop2020/
 VignetteBuilder: knitr
-DockerImage: seandavi/seandavi_biocworkshop2020template:latest
+DockerImage: seandavi/buildabiocworkshop2020:latest
