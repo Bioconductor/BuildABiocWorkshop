@@ -57,7 +57,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/howto.html">How to Create a Workshop Package</a>
+      <a href="articles/workshop_example.html">An Example Workshop</a>
     </li>
   </ul>
 </li>
@@ -74,103 +74,49 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="workshop-title" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#workshop-title" class="anchor"></a>Workshop Title</h1></div>
-<p>Authors: Author Name^[Institution], Another Author^[Another Institution]. <br> Last modified: 14 May, 2018.</p>
-<div id="overview" class="section level2">
+
+<div id="buildabiocworkshop2020" class="section level2">
 <h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<div id="description" class="section level3">
-<h3 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h3>
-<p>Along with the topic of your workshop, include how students can expect to spend their time. For the description may also include information about what type of workshop it is (e.g. instructor-led live demo, lab, lecture + lab, etc.). Instructors are strongly recommended to provide completely worked examples for lab sessions, and a set of stand-alone notes that can be read and understood outside of the workshop.</p>
+<a href="#buildabiocworkshop2020" class="anchor"></a>BuildABiocWorkshop2020</h2>
+<p>This package is a template for building a Bioconductor 2020 workshop. The package includes Github actions to:</p>
+<ol>
+<li>Set up bioconductor/bioconductor_docker:devel on Github resources</li>
+<li>Install package dependencies for your package (based on the <code>DESCRIPTION</code> file)</li>
+<li>Run <code><a href="https://rdrr.io/pkg/rcmdcheck/man/rcmdcheck.html">rcmdcheck::rcmdcheck</a></code>
+</li>
+<li>Build a pkgdown website and push it to github pages</li>
+<li>Build a docker image with the installed package and dependencies</li>
+</ol>
 </div>
-<div id="pre-requisites" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pre-requisites" class="anchor"></a>Pre-requisites</h3>
-<p>List any workshop prerequisites, for example:</p>
-<ul>
-<li>Basic knowledge of R syntax</li>
-<li>Familiarity with the GenomicRanges class</li>
-<li>Familiarity with xyz vignette (provide link)</li>
-</ul>
-<p>List relevant background reading for the workshop, including any theoretical background you expect students to have.</p>
-<ul>
-<li>List any textbooks, papers, or other reading that students should be familiar with. Include direct links where possible.</li>
-</ul>
-</div>
-<div id="participation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#participation" class="anchor"></a>Participation</h3>
-<p>Describe how students will be expected to participate in the workshop.</p>
-</div>
-<div id="r-bioconductor-packages-used" class="section level3">
-<h3 class="hasAnchor">
-<a href="#r-bioconductor-packages-used" class="anchor"></a><em>R</em> / <em>Bioconductor</em> packages used</h3>
-<p>List any <em>R</em> / <em>Bioconductor</em> packages that will be explicitly covered.</p>
-</div>
-<div id="time-outline" class="section level3">
-<h3 class="hasAnchor">
-<a href="#time-outline" class="anchor"></a>Time outline</h3>
-<p>An example for a 45-minute workshop:</p>
-<table class="table">
-<thead><tr class="header">
-<th>Activity</th>
-<th>Time</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Packages</td>
-<td>15m</td>
-</tr>
-<tr class="even">
-<td>Package Development</td>
-<td>15m</td>
-</tr>
-<tr class="odd">
-<td>Contributing to Bioconductor</td>
-<td>5m</td>
-</tr>
-<tr class="even">
-<td>Best Practices</td>
-<td>10m</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="workshop-goals-and-objectives" class="section level3">
-<h3 class="hasAnchor">
-<a href="#workshop-goals-and-objectives" class="anchor"></a>Workshop goals and objectives</h3>
-<p>List “big picture” student-centered workshop goals and learning objectives. Learning goals and objectives are related, but not the same thing. These goals and objectives will help some people to decide whether to attend the conference for training purposes, so please make these as precise and accurate as possible.</p>
-<p><em>Learning goals</em> are high-level descriptions of what participants will learn and be able to do after the workshop is over. <em>Learning objectives</em>, on the other hand, describe in very specific and measurable terms specific skills or knowledge attained. The <a href="#bloom">Bloom’s Taxonomy</a> may be a useful framework for defining and describing your goals and objectives, although there are others.</p>
-</div>
-<div id="learning-goals" class="section level3">
-<h3 class="hasAnchor">
-<a href="#learning-goals" class="anchor"></a>Learning goals</h3>
-<p>Some examples:</p>
-<ul>
-<li>describe how to…</li>
-<li>identify methods for…</li>
-<li>understand the difference between…</li>
-</ul>
-</div>
-<div id="learning-objectives" class="section level3">
-<h3 class="hasAnchor">
-<a href="#learning-objectives" class="anchor"></a>Learning objectives</h3>
-<ul>
-<li>analyze xyz data to produce…</li>
-<li>create xyz plots</li>
-<li>evaluate xyz data for artifacts</li>
-</ul>
-</div>
-</div>
-<div id="workshop" class="section level2">
+<div id="results-of-successful-deployment" class="section level2">
 <h2 class="hasAnchor">
-<a href="#workshop" class="anchor"></a>Workshop</h2>
-<p>Divide the workshop into sections (<code>## A Section</code>). Include fully-evaluated <em>R</em> code chunks. Develop exercises and solutions, and anticipate that your audience will walk through the code with you, or work on the code idependently – do not be too ambitious in the material that you present.</p>
+<a href="#results-of-successful-deployment" class="anchor"></a>Results of successful deployment</h2>
+<ul>
+<li>A working docker image that contains the installed package and dependencies.</li>
+<li>An up-to-date <code>pkgdown</code> website at <a href="https://YOURUSERNAME.github.io/YOURREPOSITORYNAME/" class="uri">https://YOURUSERNAME.github.io/YOURREPOSITORYNAME/</a>
+</li>
+<li>Docker image will be tagged with <code>latest</code>, <code>sha-XXXXXX</code> where <code>XXXXXX</code> is the hash of the current <code>master</code> commit, and <code>master</code>.</li>
+</ul>
 </div>
+<div id="to-use-the-resulting-image" class="section level2">
+<h2 class="hasAnchor">
+<a href="#to-use-the-resulting-image" class="anchor"></a>To use the resulting image:</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="ex">docker</span> run -e PASSWORD=<span class="op">&lt;</span>choose_a_password_for_rstudio<span class="op">&gt;</span> -p 8787:8787 YOURDOCKERIMAGENAME</a></code></pre></div>
+<p>Once running, navigate to <a href="https://localhost:8787/" class="uri">https://localhost:8787/</a> and then login with <code>rstudio</code>:<code>yourchosenpassword</code>.</p>
+<p>To try with <strong>this</strong> repository docker image:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">docker</span> run -e PASSWORD=abc -p 8787:8787 seandavi/buildabiocworkshop2020</a></code></pre></div>
 </div>
+<div id="details" class="section level2">
+<h2 class="hasAnchor">
+<a href="#details" class="anchor"></a>Details</h2>
+<p>For detailed instructions, see [HOWTO_BUILD_WORKSHOP.md].</p>
+</div>
+<div id="whatcha-get" class="section level2">
+<h2 class="hasAnchor">
+<a href="#whatcha-get" class="anchor"></a>Whatcha get</h2>
+<p><img src="inst/images/dockerhub.png" alt="dockerhub"></p>
+</div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

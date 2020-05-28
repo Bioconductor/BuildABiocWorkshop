@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MIT License • BuildABiocWorkshop2020</title>
+<title>NA • BuildABiocWorkshop2020</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="MIT License" />
+<meta property="og:title" content="NA" />
 
 
 
@@ -114,16 +114,76 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>MIT License</h1>
+      <h1>NA</h1>
     </div>
 
-<div id="mit-license" class="section level1">
 
-<p>Copyright (c) 2020 Sean Davis</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<div id="quickstart" class="section level2">
+<h2 class="hasAnchor">
+<a href="#quickstart" class="anchor"></a>Quickstart</h2>
+<ul>
+<li>[ ] Clone this repo, fork and rename it, or create a repo from this template</li>
+<li>[ ] Edit <code>DESCRIPTION</code> file
+<ul>
+<li>[ ] Change package name</li>
+<li>[ ] Change title and description</li>
+<li>[ ] Change authors</li>
+<li>[ ] Check dependencies</li>
+<li>[ ] Change DockerImage tag</li>
+</ul>
+</li>
+<li>[ ] Edit <code>.github/workflows/basic_checks.yaml</code>
+</li>
+<li>[ ] Write a normal R package that can be installed</li>
+<li>[ ] Include one or more vignettes that will constitute the workshop materials</li>
+</ul>
 </div>
+<div id="details" class="section level2">
+<h2 class="hasAnchor">
+<a href="#details" class="anchor"></a>Details</h2>
+<div id="clone-this-repo" class="section level3">
+<h3 class="hasAnchor">
+<a href="#clone-this-repo" class="anchor"></a>Clone this repo</h3>
+<pre><code>git clone https://github.com/seandavi/BuildABiocWorkshop2020 MYPKGDIR</code></pre>
+</div>
+<div id="edit-description-file" class="section level3">
+<h3 class="hasAnchor">
+<a href="#edit-description-file" class="anchor"></a>Edit <code>DESCRIPTION</code> file</h3>
+<ul>
+<li>Change the package name to something identifiable and descriptive, ideally something that will be somewhat unique.</li>
+<li>Edit the title and description as per any normal R package.</li>
+<li>Update authors (unless you want me to get credit for your work).</li>
+<li>Workshop packages are normal R packages, so dependencies work as usual. If you are going to depend on something on github, be sure to specify the correct repo <code>username/reponame</code>. Installation will deal with this.</li>
+</ul>
+</div>
+<div id="edit--githubworkflowsbasic_checks-yaml" class="section level3">
+<h3 class="hasAnchor">
+<a href="#edit--githubworkflowsbasic_checks-yaml" class="anchor"></a>Edit <code>.github/workflows/basic_checks.yaml</code>
+</h3>
+<p><strong>You MUST change the <code>repository</code> line in this yaml file to be YOUR desired Docker image name</strong>. In other words, this section of the github actions file will build and push to dockerhub the image with this name.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" data-line-number="1">     <span class="kw">-</span> <span class="fu">uses:</span><span class="at"> docker/build-push-action@v1</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">        <span class="fu">with:</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">          <span class="fu">username:</span><span class="at"> ${{ secrets.DOCKER_USERNAME }}</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">          <span class="fu">password:</span><span class="at"> ${{ secrets.DOCKER_PASSWORD }}</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">          <span class="co"># change the next line to reflect the name</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">          <span class="co"># of YOUR dockerhub repository</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">          <span class="fu">repository:</span><span class="at"> seandavi/buildabiocworkshop2020</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">          <span class="fu">tag_with_ref:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">          <span class="fu">tag_with_sha:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">          <span class="fu">tags:</span><span class="at"> latest</span></a></code></pre></div>
+</div>
+<div id="add-secrets-to-github-repo" class="section level3">
+<h3 class="hasAnchor">
+<a href="#add-secrets-to-github-repo" class="anchor"></a>Add “secrets” to github repo</h3>
+<ul>
+<li><p>required secrets and their names</p></li>
+<li><code>DOCKER_USERNAME</code></li>
+<li><code>DOCKER_PASSWORD</code></li>
+<li><p>Github <code>ACCESS_TOKEN</code></p></li>
+</ul>
+</div>
+</div>
+
 
   </div>
 
