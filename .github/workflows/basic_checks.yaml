@@ -5,19 +5,13 @@ jobs:
     container: rocker/verse
     steps:
       - uses: actions/checkout@v1
-      - run: Rscript fit_model.R
-      - run: Rscript -e 'rmarkdown::render("report.Rmd")'
-      - name: Upload results
-        uses: actions/upload-artifact@master
-        with:
-          name: results
-          path: report.htm
 
       - name: Query dependencies
         run: |
           install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
+        
       - name: Cache R packages
         if: runner.os != 'Windows'
         uses: actions/cache@v1
