@@ -1,13 +1,16 @@
 Package: seandavi.Bioc2020Template
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Bioconductor Workshop Template and Github Actions
+Version: 0.1.0
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Sean",
+           family = "Davis",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "seandavi@gmail.com",
+           comment = c(ORCID = "your-orc-id-here"))
+Description: This package serves as a template for using github actions to 
+    prepare a Bioconductor Workshop package for use. In particular,
+    a pkgdown website and docker image are generated based on workflow 
+    settings. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
