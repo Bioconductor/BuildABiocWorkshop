@@ -1,4 +1,4 @@
-## BuildABiocWorkshop2020
+# BuildABiocWorkshop2020
 
 This package is a template for building a Bioconductor 2020 workshop. The package
 includes Github actions to:
@@ -8,6 +8,10 @@ includes Github actions to:
 3. Run `rcmdcheck::rcmdcheck`
 4. Build a pkgdown website and push it to github pages
 5. Build a docker image with the installed package and dependencies
+
+## Details
+
+For detailed instructions, see the `How to build a workshop` article/vignette.
 
 ## Results of successful deployment
 
@@ -29,10 +33,6 @@ docker run -e PASSWORD=abc -p 8787:8787 seandavi/buildabiocworkshop2020
 ```
 
 
-## Details
-
-For detailed instructions, see [HOWTO_BUILD_WORKSHOP.md].
-
 ## Whatcha get
 
-![dockerhub](inst/images/dockerhub.png)
+![dockerhub](https://github.com/seandavi/BuildABiocWorkshop2020/raw/master/inst/images/dockerhub_result.png)

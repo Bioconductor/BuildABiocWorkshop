@@ -22,6 +22,7 @@ Suggests:
     knitr,
     rmarkdown,
     pkgdown
-Url: https://seandavi.github.io/BuildABiocWorkshop2020/
+URL: https://seandavi.github.io/BuildABiocWorkshop2020/
+BugReports: https://github.com/seandavi/BuildABiocWorkshop2020/
 VignetteBuilder: knitr
 DockerImage: seandavi/buildabiocworkshop2020:latest

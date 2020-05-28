@@ -1,3 +1,16 @@
+---
+title: "How To Build A Workshop Package"
+subtitle: "In other words, how do I use what's here"
+author: Sean Davis^[seandavi@gmail.com]
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to Use this Package to Build a Bioc Workshop}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+First, this package doesn't do much except add a template Github Action to
+build all the pieces necessary for a workshop.
 
 ## Quickstart
 
@@ -32,9 +45,10 @@ repo `username/reponame`. Installation will deal with this.
 
 ### Edit `.github/workflows/basic_checks.yaml`
 
-**You MUST change the `repository` line in this yaml file to be YOUR 
-desired Docker image name**. In other words, this section of the github
-actions file will build and push to dockerhub the image with this name.
+**You MUST change the `repository` line in this yaml file to be YOUR
+desired Docker image name**. In other words, this section of the
+github actions file will build and push to dockerhub the image with
+this name.
 
 
 ```yaml
@@ -51,10 +65,16 @@ actions file will build and push to dockerhub the image with this name.
 ```
 
 ### Add "secrets" to github repo
- 
-- required secrets and their names
 
-- `DOCKER_USERNAME`
-- `DOCKER_PASSWORD`
-- Github `ACCESS_TOKEN`
+Secrets are encrypted environment variables that you create in a
+repository or organization. The secrets you create are available to
+use in GitHub Actions workflows. GitHub uses a libsodium sealed box to
+help ensure that secrets are encrypted before they reach GitHub, and
+remain encrypted until you use them in a workflow.
+ 
+See [Creating and storing encrypted secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
+
+- `DOCKER_USERNAME`: your dockerhub username; create a dockerhub account if you do not have one
+- `DOCKER_PASSWORD`: your dockerhub password
+- Github `ACCESS_TOKEN`: a [github personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). Make sure that your personal access token contains `repo` permissions (all of them). 
 
