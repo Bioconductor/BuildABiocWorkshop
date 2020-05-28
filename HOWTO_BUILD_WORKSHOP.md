@@ -1,17 +1,7 @@
----
-title: "How to Create a Workshop Package"
-subtitle: "(Automatically)"
-author: Sean Davis^[seandavi@gmail.com]
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{How to create a workshop package}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
 
 ## Quickstart
 
-- [ ] Clone this repo (not fork)
+- [ ] Clone this repo, fork and rename it, or create a repo from this template
 - [ ] Edit `DESCRIPTION` file
   - [ ] Change package name
   - [ ] Change title and description
@@ -42,6 +32,23 @@ repo `username/reponame`. Installation will deal with this.
 
 ### Edit `.github/workflows/basic_checks.yaml`
 
+**You MUST change the `repository` line in this yaml file to be YOUR 
+desired Docker image name**. In other words, this section of the github
+actions file will build and push to dockerhub the image with this name.
+
+
+```yaml
+     - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          # change the next line to reflect the name
+          # of YOUR dockerhub repository
+          repository: seandavi/buildabiocworkshop2020
+          tag_with_ref: true
+          tag_with_sha: true
+          tags: latest
+```
 
 ### Add "secrets" to github repo
  
@@ -49,13 +56,5 @@ repo `username/reponame`. Installation will deal with this.
 
 - `DOCKER_USERNAME`
 - `DOCKER_PASSWORD`
-- `
-
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+- Github `ACCESS_TOKEN`
 
