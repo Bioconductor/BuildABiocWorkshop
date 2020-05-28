@@ -17,3 +17,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+DockerImage: seandavi/seandavi_biocworkshop2020template:latest
