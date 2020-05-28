@@ -1,4 +1,4 @@
-Package: seandavi.Bioc2020Template
+Package: BuildABiocWorkshop2020
 Title: Bioconductor Workshop Template and Github Actions
 Version: 0.1.0
 Authors@R: 
@@ -20,6 +20,8 @@ Depends:
     Biobase
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    pkgdown
+Url: https://seandavi.github.io/BuildABiocWorkshop2020/
 VignetteBuilder: knitr
 DockerImage: seandavi/seandavi_biocworkshop2020template:latest
