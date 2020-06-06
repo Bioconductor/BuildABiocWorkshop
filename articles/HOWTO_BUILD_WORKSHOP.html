@@ -106,20 +106,39 @@
 <h2 class="hasAnchor">
 <a href="#quickstart" class="anchor"></a>Quickstart</h2>
 <ul>
-<li>[ ] Clone this repo, fork and rename it, or create a repo from this template</li>
-<li>[ ] Edit <code>DESCRIPTION</code> file
-<ul>
-<li>[ ] Change package name</li>
-<li>[ ] Change title and description</li>
-<li>[ ] Change authors</li>
-<li>[ ] Check dependencies</li>
-<li>[ ] Change DockerImage tag</li>
+<li>
+<input type="checkbox" disabled>
+Clone this repo, fork and rename it, or create a repo from this template</li>
+<li>
+<input type="checkbox" disabled>
+Edit <code>DESCRIPTION</code> file<ul>
+<li>
+<input type="checkbox" disabled>
+Change package name</li>
+<li>
+<input type="checkbox" disabled>
+Change title and description</li>
+<li>
+<input type="checkbox" disabled>
+Change authors</li>
+<li>
+<input type="checkbox" disabled>
+Check dependencies</li>
+<li>
+<input type="checkbox" disabled>
+Change DockerImage tag</li>
 </ul>
 </li>
-<li>[ ] Edit <code>.github/workflows/basic_checks.yaml</code>
+<li>
+<input type="checkbox" disabled>
+Edit <code>.github/workflows/basic_checks.yaml</code>
 </li>
-<li>[ ] Write a normal R package that can be installed</li>
-<li>[ ] Include one or more vignettes that will constitute the workshop materials</li>
+<li>
+<input type="checkbox" disabled>
+Write a normal R package that can be installed</li>
+<li>
+<input type="checkbox" disabled>
+Include one or more vignettes that will constitute the workshop materials</li>
 </ul>
 </div>
 <div id="details" class="section level2">
@@ -145,16 +164,16 @@
 <a href="#edit--githubworkflowsbasic_checks-yaml" class="anchor"></a>Edit <code>.github/workflows/basic_checks.yaml</code>
 </h3>
 <p><strong>You MUST change the <code>repository</code> line in this yaml file to be YOUR desired Docker image name</strong>. In other words, this section of the github actions file will build and push to dockerhub the image with this name.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" data-line-number="1">     <span class="kw">-</span> <span class="fu">uses:</span><span class="at"> docker/build-push-action@v1</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">        <span class="fu">with:</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">          <span class="fu">username:</span><span class="at"> ${{ secrets.DOCKER_USERNAME }}</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">          <span class="fu">password:</span><span class="at"> ${{ secrets.DOCKER_PASSWORD }}</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">          <span class="co"># change the next line to reflect the name</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">          <span class="co"># of YOUR dockerhub repository</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">          <span class="fu">repository:</span><span class="at"> seandavi/buildabiocworkshop2020</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">          <span class="fu">tag_with_ref:</span><span class="at"> true</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">          <span class="fu">tag_with_sha:</span><span class="at"> true</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">          <span class="fu">tags:</span><span class="at"> latest</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> docker/build-push-action@v1</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="at">          </span><span class="fu">username</span><span class="kw">:</span><span class="at"> ${{ secrets.DOCKER_USERNAME }}</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">          </span><span class="fu">password</span><span class="kw">:</span><span class="at"> ${{ secrets.DOCKER_PASSWORD }}</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">          # change the next line to reflect the name</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">          # of YOUR dockerhub repository</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">          </span><span class="fu">repository</span><span class="kw">:</span><span class="at"> seandavi/buildabiocworkshop2020</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="at">          </span><span class="fu">tag_with_ref</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="at">          </span><span class="fu">tag_with_sha</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="at">          </span><span class="fu">tags</span><span class="kw">:</span><span class="at"> latest</span></span></code></pre></div>
 </div>
 <div id="add-secrets-to-github-repo" class="section level3">
 <h3 class="hasAnchor">
@@ -165,15 +184,15 @@
 <li>
 <code>DOCKER_USERNAME</code>: your dockerhub username; create a dockerhub account if you do not have one</li>
 <li>
-<code>DOCKER_PASSWORD</code>: your dockerhub password</li>
-<li>Github <code>ACCESS_TOKEN</code>: a <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">github personal access token</a>. Make sure that your personal access token contains <code>repo</code> permissions (all of them).</li>
+<code>DOCKER_PASSWORD</code>: your dockerhub password or an access token obtained from <a href="https://hub.docker.com/settings/security">Docker Hub</a>
+</li>
 </ul>
 </div>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p><a href="mailto:seandavi@gmail.com" class="email">seandavi@gmail.com</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p><a href="mailto:seandavi@gmail.com" class="email">seandavi@gmail.com</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
