@@ -75,7 +75,6 @@ remain encrypted until you use them in a workflow.
 See [Creating and storing encrypted secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
 
 - `DOCKER_USERNAME`: your dockerhub username; create a dockerhub account if you do not have one
-- `DOCKER_PASSWORD`: your dockerhub password or an access token obtained from [Docker Hub][]
-
-[Docker Hub]: https://hub.docker.com/settings/security
+- `DOCKER_PASSWORD`: your dockerhub password
+- Github `ACCESS_TOKEN`: a [github personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). Make sure that your personal access token contains `repo` permissions (all of them). 
 
