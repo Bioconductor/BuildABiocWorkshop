@@ -50,6 +50,10 @@ desired Docker image name**. In other words, this section of the
 github actions file will build and push to dockerhub the image with
 this name.
 
+**NOTE**: Dockerhub names must be all lowercase, can be two to 255
+  characters, and can only contain lowercase letters, numbers or `-` and
+  `_` (https://docs.docker.com/docker-hub/repos/).
+
 
 ```yaml
      - uses: docker/build-push-action@v1
@@ -63,6 +67,30 @@ this name.
           tag_with_sha: true
           tags: latest
 ```
+
+Also change the repo name here (here it is case-insensitive):
+
+```yaml
+      - name: Install dependencies
+        run: |
+          options(repos = c(CRAN = "https://cran.r-project.org"))
+          BiocManager::repositories()
+          BiocManager::install("seandavi/BuildABiocWorkshop2020", dependencies = TRUE, update = TRUE, ask = FALSE)
+          remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
+```
+
+### Edit `Dockerfile`
+
+Change `seandavi/BuildABiocWorkshop2020` to the username/reponame of
+your GitHub repo, to install your workshop and all its
+Depends/Imports/Suggests and their dependencies into the Docker
+container for your workshop.
+
+You can also choose to build on a different base Bioconductor Docker
+image. For example, to build on release 3.11 instead of devel, change
+`FROM bioconductor/bioconductor_docker:devel` to `FROM
+bioconductor/bioconductor_docker:RELEASE_3_11`.
 
 ### Add "secrets" to github repo
 

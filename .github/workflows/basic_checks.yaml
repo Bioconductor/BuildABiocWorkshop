@@ -34,7 +34,7 @@ jobs:
         run: |
           options(repos = c(CRAN = "https://cran.r-project.org"))
           BiocManager::repositories()
-          remotes::install_deps(dependencies = TRUE, repos = BiocManager::repositories())
+          BiocManager::install("seandavi/BuildABiocWorkshop2020", dependencies = TRUE, update = TRUE, ask = FALSE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
