@@ -41,6 +41,10 @@ To try with **this** repository docker image:
 docker run -e PASSWORD=abc -p 8787:8787 seandavi/buildabiocworkshop2020
 ```
 
+*NOTE*: Running docker that uses the password in plain text like above exposes the password to others 
+in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment 
+variable instead of plain text to pass along passwords and other secrets in docker command lines. 
+
 
 ## Whatcha get
 
