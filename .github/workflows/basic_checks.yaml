@@ -48,15 +48,7 @@ jobs:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
-        
-      - uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ env.repo-name }}
-          tag_with_ref: true
-          tag_with_sha: true
-          tags: latest
+      
 
       - name: Build pkgdown
         run: |
@@ -74,3 +66,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: docs # The folder the action should deploy.
+
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          # Use the environment variable on first few lines to set repo name--just centralizes changes
+          repository: ${{ env.repo-name }}
+          tag_with_ref: true
+          tag_with_sha: true
+          tags: latest
