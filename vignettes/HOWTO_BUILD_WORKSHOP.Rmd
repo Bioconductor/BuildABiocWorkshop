@@ -33,7 +33,7 @@ To accomplish this follow each of the 7 steps below. Once your edit the yaml fil
 Clone this repo, fork and **rename** it, or create a repo from this template
 
 ```
-git clone https://github.com/seandavi/BuildABiocWorkshop2020 MYPKGDIR
+git clone https://github.com/seandavi/BuildABiocWorkshop MYPKGDIR
 ```
 
 ### 2. Edit `DESCRIPTION` file
@@ -57,7 +57,7 @@ Suggests:
 ### 3. Set up a website (Github Pages)
 In your repository, click on settings or url https://github.com/<github username>/<workshop repos name>/settings.  Midway down the page, in the GitHub Pages section, select source 'gh-pages branch'.  If only 'master branch' is visible, select master for now, but once Github actions runs, 'gh-pages branch' will be available and is required to render the website. 
   
-In the DESCRIPTION file, update the URL: to the website url eg https://seandavi.github.io/BuildABiocWorkshop2020/
+In the DESCRIPTION file, update the URL: to the website url eg https://seandavi.github.io/BuildABiocWorkshop/
 
 ### 4. Edit _pkgdown.yml
 Edit the file _pkgdown.yml, updating the url:, title and href: which should be your website url, title of your workshop and github repos url respectively.  You do not need to edit this file further. You do not need to add menus or links to vignettes. GitHub Actions and pkgdown will do this when it builds the website
@@ -67,23 +67,23 @@ You need a dockerhub account, which if you don't have one, can be created at hub
 
 You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yamls files will create, build and push to dockerhub an image with your desired name. 
 
-**You MUST change the `repository` line in this yaml file to be YOUR desired Docker image name**. The image name must be in lower case.
+**You MUST change the `repository` line in this yaml file to be YOUR desired Docker image name**. The **image name must be in lower case**.
+
+
 
 
 ```yaml
-     - uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          # change the next line to reflect the name
-          # of YOUR dockerhub repository
-          repository: seandavi/buildabiocworkshop2020
-          tag_with_ref: true
-          tag_with_sha: true
-          tags: latest
+on: [push, pull_request]
+
+env:
+  cache-version: v1
+  # Change the following line to what you want YOUR
+  # docker image to be called. Do not include 
+  # any tags--those will be added automatically
+  repo-name: seandavi/buildabiocworkshop
 ```
 
-In the DESCRIPTION file, the DockerImage: should match your desired name for a dockerhub repository.
+In the DESCRIPTION file, the **DockerImage: should match your desired name for a dockerhub repository**.
 
 ### 6. Add "secrets" to github repo
 
