@@ -1,6 +1,6 @@
-# DEPRECATED--BuildABiocWorkshop2020
+# BuildABiocWorkshop
 
-This package **WAS** a template for building a Bioconductor 2020 workshop. The package
+This package is a template for building a Bioconductor workshop. The package
 includes Github actions to:
 
 1. Set up bioconductor/bioconductor_docker:devel on Github resources
@@ -48,6 +48,6 @@ variable instead of plain text to pass along passwords and other secrets in dock
 
 ## Whatcha get
 
-https://seandavi.github.io/BuildABiocWorkshop2020
+https://seandavi.github.io/BuildABiocWorkshop
 
-![dockerhub](https://github.com/seandavi/BuildABiocWorkshop2020/raw/master/inst/images/dockerhub_result.png)
+![dockerhub](https://github.com/seandavi/BuildABiocWorkshop/raw/master/inst/images/dockerhub_result.png)
