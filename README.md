@@ -1,6 +1,6 @@
-# BuildABiocWorkshop2020
+# DEPRECATED--BuildABiocWorkshop2020
 
-This package is a template for building a Bioconductor 2020 workshop. The package
+This package **WAS** a template for building a Bioconductor 2020 workshop. The package
 includes Github actions to:
 
 1. Set up bioconductor/bioconductor_docker:devel on Github resources
