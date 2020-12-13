@@ -1,4 +1,8 @@
 on: [push]
+
+env:
+  cache-version: v1
+
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -8,8 +12,6 @@ jobs:
 
       - name: Query dependencies and update old packages
         run: |
-          install.packages('remotes')
-          options(repos = c(CRAN = 'https://cran.r-project.org'))
           BiocManager::install(ask=FALSE)
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
@@ -19,8 +21,8 @@ jobs:
         uses: actions/cache@v1
         with:
           path: /usr/local/lib/R/site-library
-          key: ${{ runner.os }}-r-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-1-
+          key: ${{ env.cache-version }}-${{ runner.os }}-r-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-r-
 
       # This lets us augment with additional dependencies
       - name: Install system dependencies
