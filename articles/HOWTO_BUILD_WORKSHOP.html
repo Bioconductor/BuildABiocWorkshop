@@ -176,7 +176,10 @@ Include one or more vignettes that will constitute the workshop materials</li>
 </h3>
 <p>You need a dockerhub account, which if you don’t have one, can be created at hub.docker.com. Your <docker user name> maybe different to your <gitub username name>.</gitub></docker></p>
 <p>You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yamls files will create, build and push to dockerhub an image with your desired name.</p>
-<p><strong>You MUST change the <code>repository</code> line in this yaml file to be YOUR desired Docker image name</strong>. The <strong>image name must be in lower case</strong>.</p>
+<ul>
+<li><p><strong>You MUST change the <code>repository</code> line in this yaml file to be YOUR desired Docker image name</strong>.</p></li>
+<li><p>The <strong>image name must be in lower case</strong>.</p></li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span><span class="kw">:</span></span>

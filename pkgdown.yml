@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   HOWTO_BUILD_WORKSHOP: HOWTO_BUILD_WORKSHOP.html
   workshop_example: workshop_example.html
-last_built: 2021-03-17T12:56Z
+last_built: 2021-03-17T12:58Z
 urls:
   reference: https://seandavi.github.io/BuildABiocWorkshop/reference
   article: https://seandavi.github.io/BuildABiocWorkshop/articles
