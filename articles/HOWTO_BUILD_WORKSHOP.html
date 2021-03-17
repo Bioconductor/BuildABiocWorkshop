@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -65,7 +65,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/seandavi/BuildABiocWorkshop">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -79,8 +79,7 @@
 
       
 
-      </header><script src="HOWTO_BUILD_WORKSHOP_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="HOWTO_BUILD_WORKSHOP_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="HOWTO_BUILD_WORKSHOP_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="HOWTO_BUILD_WORKSHOP_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How To Build A Workshop Package</h1>
@@ -100,13 +99,13 @@
 <div id="quickstart" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quickstart" class="anchor"></a>Quickstart</h2>
-<ul>
+<ul class="task-list">
 <li>
 <input type="checkbox" disabled>
 Clone this repo, fork and rename it, or create a repo from this template</li>
 <li>
 <input type="checkbox" disabled>
-Edit <code>DESCRIPTION</code> file<ul>
+Edit <code>DESCRIPTION</code> file<ul class="task-list">
 <li>
 <input type="checkbox" disabled>
 Change package name</li>
@@ -166,9 +165,10 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <p>In your repository, click on settings or url <a href="https://github.com/" class="uri">https://github.com/</a><github username>/<workshop repos name>/settings. Midway down the page, in the GitHub Pages section, select source ‘gh-pages branch’. If only ‘master branch’ is visible, select master for now, but once Github actions runs, ‘gh-pages branch’ will be available and is required to render the website.</workshop></github></p>
 <p>In the DESCRIPTION file, update the URL: to the website url eg <a href="https://seandavi.github.io/BuildABiocWorkshop/" class="uri">https://seandavi.github.io/BuildABiocWorkshop/</a></p>
 </div>
-<div id="edit-_pkgdown-yml-edit-the-file-_pkgdown-yml-updating-the-url-title-and-href-which-should-be-your-website-url-title-of-your-workshop-and-github-repos-url-respectively--you-do-not-need-to-edit-this-file-further--you-do-not-need-to-add-menus-or-links-to-vignettes--github-actions-and-pkgdown-will-do-this-when-it-builds-the-website" class="section level3">
+<div id="edit-_pkgdown-yml" class="section level3">
 <h3 class="hasAnchor">
-<a href="#edit-_pkgdown-yml-edit-the-file-_pkgdown-yml-updating-the-url-title-and-href-which-should-be-your-website-url-title-of-your-workshop-and-github-repos-url-respectively--you-do-not-need-to-edit-this-file-further--you-do-not-need-to-add-menus-or-links-to-vignettes--github-actions-and-pkgdown-will-do-this-when-it-builds-the-website" class="anchor"></a>4. Edit _pkgdown.yml Edit the file _pkgdown.yml, updating the url:, title and href: which should be your website url, title of your workshop and github repos url respectively. You do not need to edit this file further. You do not need to add menus or links to vignettes. GitHub Actions and pkgdown will do this when it builds the website</h3>
+<a href="#edit-_pkgdown-yml" class="anchor"></a>4. Edit _pkgdown.yml</h3>
+<p>Edit the file _pkgdown.yml, updating the url:, title and href: which should be your website url, title of your workshop and github repos url respectively. You do not need to edit this file further. You do not need to add menus or links to vignettes. GitHub Actions and pkgdown will do this when it builds the website</p>
 </div>
 <div id="edit--githubworkflowsbasic_checks-yaml" class="section level3">
 <h3 class="hasAnchor">
@@ -177,14 +177,14 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <p>You need a dockerhub account, which if you don’t have one, can be created at hub.docker.com. Your <docker user name> maybe different to your <gitub username name>.</gitub></docker></p>
 <p>You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yamls files will create, build and push to dockerhub an image with your desired name.</p>
 <p><strong>You MUST change the <code>repository</code> line in this yaml file to be YOUR desired Docker image name</strong>. The <strong>image name must be in lower case</strong>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">env</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="at">  </span><span class="fu">cache-version</span><span class="kw">:</span><span class="at"> v1</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">  # Change the following line to what you want YOUR</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">  # docker image to be called. Do not include </span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">  # any tags--those will be added automatically</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="at">  </span><span class="fu">repo-name</span><span class="kw">:</span><span class="at"> seandavi/buildabiocworkshop</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cache-version</span><span class="kw">:</span><span class="at"> v1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  # Change the following line to what you want YOUR</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  # docker image to be called. Do not include </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  # any tags--those will be added automatically</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">repo-name</span><span class="kw">:</span><span class="at"> seandavi/buildabiocworkshop</span></span></code></pre></div>
 <p>In the DESCRIPTION file, the <strong>DockerImage: should match your desired name for a dockerhub repository</strong>.</p>
 </div>
 <div id="add-secrets-to-github-repo" class="section level3">
