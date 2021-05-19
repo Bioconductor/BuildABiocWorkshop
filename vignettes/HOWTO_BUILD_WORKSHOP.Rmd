@@ -14,7 +14,7 @@ build all the pieces necessary for a workshop.
 
 ## Quickstart
 
-- [ ] Clone this repo, fork and rename it, or create a repo from this template
+- [ ] Create a repo from this template and rename it (do not fork the repository).
 - [ ] Edit `DESCRIPTION` file
   - [ ] Change package name
   - [ ] Change title and description
