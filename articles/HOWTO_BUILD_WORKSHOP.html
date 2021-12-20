@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BuildABiocWorkshop</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/seandavi/BuildABiocWorkshop">
+  <a href="https://github.com/seandavi/BuildABiocWorkshop" class="external-link">
     <span class="fa fa-github"></span>
      
   </a>
@@ -79,16 +75,16 @@
 
       
 
-      </header><script src="HOWTO_BUILD_WORKSHOP_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How To Build A Workshop Package</h1>
-            <h3 class="subtitle">In other words, how do I use what’s here</h3>
-                        <h4 class="author">Sean Davis<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+            <h3 data-toc-skip class="subtitle">In other words, how do I use what’s here</h3>
+                        <h4 data-toc-skip class="author">Sean Davis<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
 </h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop/blob/master/vignettes/HOWTO_BUILD_WORKSHOP.Rmd"><code>vignettes/HOWTO_BUILD_WORKSHOP.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop/blob/HEAD/vignettes/HOWTO_BUILD_WORKSHOP.Rmd" class="external-link"><code>vignettes/HOWTO_BUILD_WORKSHOP.Rmd</code></a></small>
       <div class="hidden name"><code>HOWTO_BUILD_WORKSHOP.Rmd</code></div>
 
     </div>
@@ -96,9 +92,9 @@
     
     
 <p>First, this package doesn’t do much except add a template Github Action to build all the pieces necessary for a workshop.</p>
-<div id="quickstart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#quickstart" class="anchor"></a>Quickstart</h2>
+<div class="section level2">
+<h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
+</h2>
 <ul class="task-list">
 <li>
 <input type="checkbox" disabled>
@@ -135,19 +131,19 @@ Write a normal R package that can be installed</li>
 Include one or more vignettes that will constitute the workshop materials</li>
 </ul>
 </div>
-<div id="details" class="section level2">
-<h2 class="hasAnchor">
-<a href="#details" class="anchor"></a>Details</h2>
+<div class="section level2">
+<h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
+</h2>
 <p>To accomplish this follow each of the 7 steps below. Once your edit the yaml files, Github actions will run each time you commit to github and it creates the pkgdown website and docker image for you.</p>
-<div id="clone-this-repo" class="section level3">
-<h3 class="hasAnchor">
-<a href="#clone-this-repo" class="anchor"></a>1. Clone this repo</h3>
+<div class="section level3">
+<h3 id="clone-this-repo">1. Clone this repo<a class="anchor" aria-label="anchor" href="#clone-this-repo"></a>
+</h3>
 <p>Clone this repo, fork and <strong>rename</strong> it, or create a repo from this template</p>
 <pre><code>git clone https://github.com/seandavi/BuildABiocWorkshop MYPKGDIR</code></pre>
 </div>
-<div id="edit-description-file" class="section level3">
-<h3 class="hasAnchor">
-<a href="#edit-description-file" class="anchor"></a>2. Edit <code>DESCRIPTION</code> file</h3>
+<div class="section level3">
+<h3 id="edit-description-file">2. Edit <code>DESCRIPTION</code> file<a class="anchor" aria-label="anchor" href="#edit-description-file"></a>
+</h3>
 <ul>
 <li>Change the package name to something identifiable and descriptive, ideally something that will be somewhat unique.</li>
 <li>Edit the title and description as per any normal R package.</li>
@@ -159,20 +155,19 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <li>Edit the last 3 lines of the DESCRIPTION FILE, URL, BugReports and DockerImage (described in more detail below)</li>
 </ul>
 </div>
-<div id="set-up-a-website-github-pages" class="section level3">
-<h3 class="hasAnchor">
-<a href="#set-up-a-website-github-pages" class="anchor"></a>3. Set up a website (Github Pages)</h3>
-<p>In your repository, click on settings or url <a href="https://github.com/" class="uri">https://github.com/</a><github username>/<workshop repos name>/settings. Midway down the page, in the GitHub Pages section, select source ‘gh-pages branch’. If only ‘master branch’ is visible, select master for now, but once Github actions runs, ‘gh-pages branch’ will be available and is required to render the website.</workshop></github></p>
+<div class="section level3">
+<h3 id="set-up-a-website-github-pages">3. Set up a website (Github Pages)<a class="anchor" aria-label="anchor" href="#set-up-a-website-github-pages"></a>
+</h3>
+<p>In your repository, click on settings or url <a href="https://github.com/" class="external-link uri">https://github.com/</a><github username>/<workshop repos name>/settings. Midway down the page, in the GitHub Pages section, select source ‘gh-pages branch’. If only ‘master branch’ is visible, select master for now, but once Github actions runs, ‘gh-pages branch’ will be available and is required to render the website.</workshop></github></p>
 <p>In the DESCRIPTION file, update the URL: to the website url eg <a href="https://seandavi.github.io/BuildABiocWorkshop/" class="uri">https://seandavi.github.io/BuildABiocWorkshop/</a></p>
 </div>
-<div id="edit-_pkgdown-yml" class="section level3">
-<h3 class="hasAnchor">
-<a href="#edit-_pkgdown-yml" class="anchor"></a>4. Edit _pkgdown.yml</h3>
+<div class="section level3">
+<h3 id="edit-_pkgdown-yml">4. Edit _pkgdown.yml<a class="anchor" aria-label="anchor" href="#edit-_pkgdown-yml"></a>
+</h3>
 <p>Edit the file _pkgdown.yml, updating the url:, title and href: which should be your website url, title of your workshop and github repos url respectively. You do not need to edit this file further. You do not need to add menus or links to vignettes. GitHub Actions and pkgdown will do this when it builds the website</p>
 </div>
-<div id="edit--githubworkflowsbasic_checks-yaml" class="section level3">
-<h3 class="hasAnchor">
-<a href="#edit--githubworkflowsbasic_checks-yaml" class="anchor"></a>5. Edit <code>.github/workflows/basic_checks.yaml</code>
+<div class="section level3">
+<h3 id="edit--githubworkflowsbasic_checks-yaml">5. Edit <code>.github/workflows/basic_checks.yaml</code><a class="anchor" aria-label="anchor" href="#edit--githubworkflowsbasic_checks-yaml"></a>
 </h3>
 <p>You need a dockerhub account, which if you don’t have one, can be created at hub.docker.com. Your <docker user name> maybe different to your <gitub username name>.</gitub></docker></p>
 <p>You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yamls files will create, build and push to dockerhub an image with your desired name.</p>
@@ -190,22 +185,22 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">repo-name</span><span class="kw">:</span><span class="at"> seandavi/buildabiocworkshop</span></span></code></pre></div>
 <p>In the DESCRIPTION file, the <strong>DockerImage: should match your desired name for a dockerhub repository</strong>.</p>
 </div>
-<div id="add-secrets-to-github-repo" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add-secrets-to-github-repo" class="anchor"></a>6. Add “secrets” to github repo</h3>
+<div class="section level3">
+<h3 id="add-secrets-to-github-repo">6. Add “secrets” to github repo<a class="anchor" aria-label="anchor" href="#add-secrets-to-github-repo"></a>
+</h3>
 <p>Secrets are encrypted environment variables that you create in a repository or organization. The secrets you create are available to use in GitHub Actions workflows. GitHub uses a libsodium sealed box to help ensure that secrets are encrypted before they reach GitHub, and remain encrypted until you use them in a workflow.</p>
-<p>See <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Creating and storing encrypted secrets</a></p>
+<p>See <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets" class="external-link">Creating and storing encrypted secrets</a></p>
 <ul>
 <li>
 <code>DOCKER_USERNAME</code>: your dockerhub username; create a dockerhub account if you do not have one</li>
 <li>
-<code>DOCKER_PASSWORD</code>: your dockerhub password or an access token obtained from <a href="https://hub.docker.com/settings/security">Docker Hub</a>
+<code>DOCKER_PASSWORD</code>: your dockerhub password or an access token obtained from <a href="https://hub.docker.com/settings/security" class="external-link">Docker Hub</a>
 </li>
 </ul>
 </div>
-<div id="edit-readme-md-add-vignettes-to-vignettes-folder" class="section level3">
-<h3 class="hasAnchor">
-<a href="#edit-readme-md-add-vignettes-to-vignettes-folder" class="anchor"></a>7. Edit README.md, add vignettes to vignettes folder</h3>
+<div class="section level3">
+<h3 id="edit-readme-md-add-vignettes-to-vignettes-folder">7. Edit README.md, add vignettes to vignettes folder<a class="anchor" aria-label="anchor" href="#edit-readme-md-add-vignettes-to-vignettes-folder"></a>
+</h3>
 <p>Edit the README.md. and add one or more Rmd vignettes that will constitute the workshop materials. It is normal R package that should pass rcmdcheck::rcmdcheck(), and be installed using regular R package install commands.</p>
 </div>
 </div>
@@ -228,11 +223,13 @@ Include one or more vignettes that will constitute the workshop materials</li>
 
 
       <footer><div class="copyright">
-  <p>Developed by Sean Davis.</p>
+  <p></p>
+<p>Developed by Sean Davis.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -240,6 +237,8 @@ Include one or more vignettes that will constitute the workshop materials</li>
 
   
 
+
+  
 
   </body>
 </html>
