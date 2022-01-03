@@ -74,7 +74,6 @@ jobs:
   docker-build-and-push:
     needs: r-build-and-check
     runs-on: ubuntu-latest
-    container: bioconductor/bioconductor_docker:devel
     permissions:
       contents: read
       packages: write
