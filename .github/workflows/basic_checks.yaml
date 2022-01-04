@@ -87,9 +87,10 @@ jobs:
       - name: Set Environment Variables
         run: |
           REPO_LOWER="$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')"
+          REGISTRY=ghcr.io
           echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
           echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
-          echo "REGISTRY=ghcr.io" >> $GITHUB_ENV
+          echo "REGISTRY=${REGISTRY}" >> $GITHUB_ENV
           echo "IMAGE=${REGISTRY}/${REPO_LOWER}" >> $GITHUB_ENV
           
       - name: Show environment
