@@ -21,20 +21,24 @@ build all the pieces necessary for a workshop.
   - [ ] Change authors
   - [ ] Check dependencies
   - [ ] Change DockerImage tag
-- [ ] Edit '_pkgdown.yml' and`.github/workflows/basic_checks.yaml`
+- [ ] Edit '_pkgdown.yml' (and `.github/workflows yaml file` as needed)
 - [ ] Write a normal R package that can be installed
 - [ ] Include one or more vignettes that will constitute the workshop materials
 
 ## Details
 
-To accomplish this follow each of the 7 steps below. Once your edit the yaml files, Github actions will run each time you commit to github and it creates the pkgdown website and docker image for you. 
+To accomplish this follow each of the 7 steps below. Once your edit the yaml files, Github actions will run each time you commit to github and will create for you:
+
+- the pkgdown website
+- the docker image 
 
 ### 1. Clone this repo
-Clone this repo, fork and **rename** it, or create a repo from this template
 
-```
-git clone https://github.com/seandavi/BuildABiocWorkshop MYPKGDIR
-```
+Clone this repo, fork and **rename** it,
+
+OR 
+
+(PREFERRED) create a repo from this template
 
 ### 2. Edit `DESCRIPTION` file
 
@@ -58,55 +62,23 @@ Suggests:
 
 In your repository, click on settings or url https://github.com/<github username>/<workshop repos name>/settings.  Midway down the page, in the GitHub Pages section, select source 'gh-pages branch'.  If only 'master branch' is visible, select master for now, but once Github actions runs, 'gh-pages branch' will be available and is required to render the website. 
   
-In the DESCRIPTION file, update the URL: to the website url eg https://seandavi.github.io/BuildABiocWorkshop/
+In the DESCRIPTION file, update the URL: to the website url eg https://seandavi.github.io/BuildABiocWorkshop/ (but substitute your own repo, etc.)
 
 ### 4. Edit _pkgdown.yml
 
 Edit the file _pkgdown.yml, updating the url:, title and href: which should be your website url, title of your workshop and github repos url respectively.  You do not need to edit this file further. You do not need to add menus or links to vignettes. GitHub Actions and pkgdown will do this when it builds the website
 
-### 5. Edit `.github/workflows/basic_checks.yaml`
-
-You need a dockerhub account, which if you don't have one, can be created at hub.docker.com.  Your <docker user name> maybe different to your <gitub username name>. 
-
-You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yamls files will create, build and push to dockerhub an image with your desired name. 
-
-- **You MUST change the `repository` line in this yaml file to be YOUR desired Docker image name**. 
-
-- The **image name must be in lower case**.
+### 5. Edit `.github/workflows yaml` as needed (likely no need)
 
 
+You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yaml files will create, build and push to the Github Container Registry an image with the name (default) `ghcr.io/yourgithubuser/yourgithubreponame`, all lowercase. 
 
 
-```yaml
-on: [push, pull_request]
-
-env:
-  cache-version: v1
-  # Change the following line to what you want YOUR
-  # docker image to be called. Do not include 
-  # any tags--those will be added automatically
-  repo-name: seandavi/buildabiocworkshop
-```
-
-In the DESCRIPTION file, the **DockerImage: should match your desired name for a dockerhub repository**.
-
-### 6. Add "secrets" to github repo
-
-Secrets are encrypted environment variables that you create in a
-repository or organization. The secrets you create are available to
-use in GitHub Actions workflows. GitHub uses a libsodium sealed box to
-help ensure that secrets are encrypted before they reach GitHub, and
-remain encrypted until you use them in a workflow.
- 
-See [Creating and storing encrypted secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
-
-- `DOCKER_USERNAME`: your dockerhub username; create a dockerhub account if you do not have one
-- `DOCKER_PASSWORD`: your dockerhub password or an access token obtained from [Docker Hub][]
-
-[Docker Hub]: https://hub.docker.com/settings/security
+In the DESCRIPTION file, the **DockerImage: should match your the docker image name (should be lowercase)**.
 
 
-### 7. Edit README.md, add vignettes to vignettes folder
-Edit the README.md. and add one or more Rmd vignettes that will constitute the workshop materials. It is normal R package that should pass rcmdcheck::rcmdcheck(), and be installed using regular R package install commands.  
+### 6. Edit README.md, add vignettes to vignettes folder
+  
+Edit the README.md. and add one or more Rmd vignettes that will constitute the workshop materials. It is normal R package that should pass `rcmdcheck::rcmdcheck()`, and be installed using regular R package install commands.  
 
 
