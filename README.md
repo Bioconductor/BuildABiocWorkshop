@@ -7,14 +7,14 @@ includes Github actions to:
 2. Install package dependencies for your package (based on the `DESCRIPTION` file)
 3. Run `rcmdcheck::rcmdcheck`
 4. Build a pkgdown website and push it to github pages
-5. Build a docker image with the installed package and dependencies
+5. Build a docker image with the installed package and dependencies and deploy to [the Github Container Repository](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pulling-container-images) at the name `ghcr.io/gihub_user/repo_name`, all lowercase. 
 
 ## Responsibilities
 
-This year, package authors will be primarily responsible for:
+Package authors are primarily responsible for:
 
 1. Creating a landing site of their choosing for their workshops (a website). This website should be listed in the `DESCRIPTION` file as the `URL`.
-2. Creating a docker account and image that will contain workshop materials and the installed packages necessary to run those materials. The name of the resulting docker image, including "tag" if desired, should be listed in a non-standard tag, `DockerImage:` in the `DESCRIPTION` file. 
+2. Creating a docker image that will contain workshop materials and the installed packages necessary to run those materials. The name of the resulting docker image, including "tag" if desired, should be listed in a non-standard tag, `DockerImage:` in the `DESCRIPTION` file. 
 
 Both of those tasks can be accomplished using the Github actions included in this template package. The vignette accompanying this package describes how to accomplish both of these tasks.
 
@@ -38,7 +38,7 @@ Once running, navigate to https://localhost:8787/ and then login with `rstudio`:
 To try with **this** repository docker image:
 
 ```sh
-docker run -e PASSWORD=abc -p 8787:8787 seandavi/buildabiocworkshop2020
+docker run -e PASSWORD=abc -p 8787:8787 ghcr.io/seandavi/buildabiocworkshop
 ```
 
 *NOTE*: Running docker that uses the password in plain text like above exposes the password to others 
@@ -48,6 +48,5 @@ variable instead of plain text to pass along passwords and other secrets in dock
 
 ## Whatcha get
 
-https://seandavi.github.io/BuildABiocWorkshop
-
-![dockerhub](https://github.com/seandavi/BuildABiocWorkshop/raw/master/inst/images/dockerhub_result.png)
+- https://seandavi.github.io/BuildABiocWorkshop
+- A Docker image that you can run locally, in the cloud, or (usually) even as a singularity container on HPC systems. 
