@@ -1,12 +1,12 @@
 Package: BuildABiocWorkshop
-Title: Bioconductor Workshop Template and Github Actions
-Version: 1.9.0
+Title: Bioconductor or R Workshop Template and Github Actions
+Version: 2.0.0
 Authors@R: 
     person(given = "Sean",
            family = "Davis",
            role = c("aut", "cre"),
            email = "seandavi@gmail.com",
-           comment = c(ORCID = "your-orc-id-here"))
+           comment = c(ORCID = "0000-0002-8991-6458"))
 Description: This package serves as a template for using github actions to 
     prepare a Bioconductor Workshop package for use. In particular,
     a pkgdown website and docker image are generated based on workflow 
