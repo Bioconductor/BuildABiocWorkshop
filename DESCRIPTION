@@ -25,4 +25,4 @@ Suggests:
 URL: https://seandavi.github.io/BuildABiocWorkshop/
 BugReports: https://github.com/seandavi/BuildABiocWorkshop/issues/new/choose
 VignetteBuilder: knitr
-DockerImage: seandavi/buildabiocworkshop:latest
+DockerImage: ghcr.io/seandavi/buildabiocworkshop:latest
