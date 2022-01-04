@@ -90,15 +90,15 @@
 <li>Run <code><a href="http://r-lib.github.io/rcmdcheck/reference/rcmdcheck.html" class="external-link">rcmdcheck::rcmdcheck</a></code>
 </li>
 <li>Build a pkgdown website and push it to github pages</li>
-<li>Build a docker image with the installed package and dependencies</li>
+<li>Build a docker image with the installed package and dependencies and deploy to <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pulling-container-images" class="external-link">the Github Container Repository</a> at the name <code>ghcr.io/gihub_user/repo_name</code>, all lowercase.</li>
 </ol>
 <div class="section level2">
 <h2 id="responsibilities">Responsibilities<a class="anchor" aria-label="anchor" href="#responsibilities"></a>
 </h2>
-<p>This year, package authors will be primarily responsible for:</p>
+<p>Package authors are primarily responsible for:</p>
 <ol style="list-style-type: decimal">
 <li>Creating a landing site of their choosing for their workshops (a website). This website should be listed in the <code>DESCRIPTION</code> file as the <code>URL</code>.</li>
-<li>Creating a docker account and image that will contain workshop materials and the installed packages necessary to run those materials. The name of the resulting docker image, including “tag” if desired, should be listed in a non-standard tag, <code>DockerImage:</code> in the <code>DESCRIPTION</code> file.</li>
+<li>Creating a docker image that will contain workshop materials and the installed packages necessary to run those materials. The name of the resulting docker image, including “tag” if desired, should be listed in a non-standard tag, <code>DockerImage:</code> in the <code>DESCRIPTION</code> file.</li>
 </ol>
 <p>Both of those tasks can be accomplished using the Github actions included in this template package. The vignette accompanying this package describes how to accomplish both of these tasks.</p>
 </div>
@@ -123,16 +123,16 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=<span class="op">&lt;</span>choose_a_password_for_rstudio<span class="op">&gt;</span> -p 8787:8787 YOURDOCKERIMAGENAME</span></code></pre></div>
 <p>Once running, navigate to <a href="https://localhost:8787/" class="external-link uri">https://localhost:8787/</a> and then login with <code>rstudio</code>:<code>yourchosenpassword</code>.</p>
 <p>To try with <strong>this</strong> repository docker image:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=abc <span class="at">-p</span> 8787:8787 seandavi/buildabiocworkshop2020</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=abc <span class="at">-p</span> 8787:8787 ghcr.io/seandavi/buildabiocworkshop</span></code></pre></div>
 <p><em>NOTE</em>: Running docker that uses the password in plain text like above exposes the password to others in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment variable instead of plain text to pass along passwords and other secrets in docker command lines.</p>
 </div>
 <div class="section level2">
 <h2 id="whatcha-get">Whatcha get<a class="anchor" aria-label="anchor" href="#whatcha-get"></a>
 </h2>
-<p><a href="https://seandavi.github.io/BuildABiocWorkshop" class="uri">https://seandavi.github.io/BuildABiocWorkshop</a></p>
-<div class="figure">
-<img src="https://github.com/seandavi/BuildABiocWorkshop/raw/master/inst/images/dockerhub_result.png" alt=""><p class="caption">dockerhub</p>
-</div>
+<ul>
+<li><a href="https://seandavi.github.io/BuildABiocWorkshop" class="uri">https://seandavi.github.io/BuildABiocWorkshop</a></li>
+<li>A Docker image that you can run locally, in the cloud, or (usually) even as a singularity container on HPC systems.</li>
+</ul>
 </div>
 </div>
   </div>
