@@ -121,8 +121,7 @@ Change DockerImage tag</li>
 </li>
 <li>
 <input type="checkbox" disabled>
-Edit ’_pkgdown.yml’ and<code>.github/workflows/basic_checks.yaml</code>
-</li>
+Edit ’_pkgdown.yml’ (and <code>.github/workflows yaml file</code> as needed)</li>
 <li>
 <input type="checkbox" disabled>
 Write a normal R package that can be installed</li>
@@ -134,12 +133,17 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <div class="section level2">
 <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
 </h2>
-<p>To accomplish this follow each of the 7 steps below. Once your edit the yaml files, Github actions will run each time you commit to github and it creates the pkgdown website and docker image for you.</p>
+<p>To accomplish this follow each of the 7 steps below. Once your edit the yaml files, Github actions will run each time you commit to github and will create for you:</p>
+<ul>
+<li>the pkgdown website</li>
+<li>the docker image</li>
+</ul>
 <div class="section level3">
 <h3 id="clone-this-repo">1. Clone this repo<a class="anchor" aria-label="anchor" href="#clone-this-repo"></a>
 </h3>
-<p>Clone this repo, fork and <strong>rename</strong> it, or create a repo from this template</p>
-<pre><code>git clone https://github.com/seandavi/BuildABiocWorkshop MYPKGDIR</code></pre>
+<p>Clone this repo, fork and <strong>rename</strong> it,</p>
+<p>OR</p>
+<p>(PREFERRED) create a repo from this template</p>
 </div>
 <div class="section level3">
 <h3 id="edit-description-file">2. Edit <code>DESCRIPTION</code> file<a class="anchor" aria-label="anchor" href="#edit-description-file"></a>
@@ -159,7 +163,7 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <h3 id="set-up-a-website-github-pages">3. Set up a website (Github Pages)<a class="anchor" aria-label="anchor" href="#set-up-a-website-github-pages"></a>
 </h3>
 <p>In your repository, click on settings or url <a href="https://github.com/" class="external-link uri">https://github.com/</a><github username>/<workshop repos name>/settings. Midway down the page, in the GitHub Pages section, select source ‘gh-pages branch’. If only ‘master branch’ is visible, select master for now, but once Github actions runs, ‘gh-pages branch’ will be available and is required to render the website.</workshop></github></p>
-<p>In the DESCRIPTION file, update the URL: to the website url eg <a href="https://seandavi.github.io/BuildABiocWorkshop/" class="uri">https://seandavi.github.io/BuildABiocWorkshop/</a></p>
+<p>In the DESCRIPTION file, update the URL: to the website url eg <a href="https://seandavi.github.io/BuildABiocWorkshop/" class="uri">https://seandavi.github.io/BuildABiocWorkshop/</a> (but substitute your own repo, etc.)</p>
 </div>
 <div class="section level3">
 <h3 id="edit-_pkgdown-yml">4. Edit _pkgdown.yml<a class="anchor" aria-label="anchor" href="#edit-_pkgdown-yml"></a>
@@ -167,41 +171,15 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <p>Edit the file _pkgdown.yml, updating the url:, title and href: which should be your website url, title of your workshop and github repos url respectively. You do not need to edit this file further. You do not need to add menus or links to vignettes. GitHub Actions and pkgdown will do this when it builds the website</p>
 </div>
 <div class="section level3">
-<h3 id="edit--githubworkflowsbasic_checks-yaml">5. Edit <code>.github/workflows/basic_checks.yaml</code><a class="anchor" aria-label="anchor" href="#edit--githubworkflowsbasic_checks-yaml"></a>
+<h3 id="edit--githubworkflows-yaml-as-needed-likely-no-need">5. Edit <code>.github/workflows yaml</code> as needed (likely no need)<a class="anchor" aria-label="anchor" href="#edit--githubworkflows-yaml-as-needed-likely-no-need"></a>
 </h3>
-<p>You need a dockerhub account, which if you don’t have one, can be created at hub.docker.com. Your <docker user name> maybe different to your <gitub username name>.</gitub></docker></p>
-<p>You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yamls files will create, build and push to dockerhub an image with your desired name.</p>
-<ul>
-<li><p><strong>You MUST change the <code>repository</code> line in this yaml file to be YOUR desired Docker image name</strong>.</p></li>
-<li><p>The <strong>image name must be in lower case</strong>.</p></li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cache-version</span><span class="kw">:</span><span class="at"> v1</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  # Change the following line to what you want YOUR</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  # docker image to be called. Do not include </span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  # any tags--those will be added automatically</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">repo-name</span><span class="kw">:</span><span class="at"> seandavi/buildabiocworkshop</span></span></code></pre></div>
-<p>In the DESCRIPTION file, the <strong>DockerImage: should match your desired name for a dockerhub repository</strong>.</p>
+<p>You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yaml files will create, build and push to the Github Container Registry an image with the name (default) <code>ghcr.io/yourgithubuser/yourgithubreponame</code>, all lowercase.</p>
+<p>In the DESCRIPTION file, the <strong>DockerImage: should match your the docker image name (should be lowercase)</strong>.</p>
 </div>
 <div class="section level3">
-<h3 id="add-secrets-to-github-repo">6. Add “secrets” to github repo<a class="anchor" aria-label="anchor" href="#add-secrets-to-github-repo"></a>
+<h3 id="edit-readme-md-add-vignettes-to-vignettes-folder">6. Edit README.md, add vignettes to vignettes folder<a class="anchor" aria-label="anchor" href="#edit-readme-md-add-vignettes-to-vignettes-folder"></a>
 </h3>
-<p>Secrets are encrypted environment variables that you create in a repository or organization. The secrets you create are available to use in GitHub Actions workflows. GitHub uses a libsodium sealed box to help ensure that secrets are encrypted before they reach GitHub, and remain encrypted until you use them in a workflow.</p>
-<p>See <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets" class="external-link">Creating and storing encrypted secrets</a></p>
-<ul>
-<li>
-<code>DOCKER_USERNAME</code>: your dockerhub username; create a dockerhub account if you do not have one</li>
-<li>
-<code>DOCKER_PASSWORD</code>: your dockerhub password or an access token obtained from <a href="https://hub.docker.com/settings/security" class="external-link">Docker Hub</a>
-</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="edit-readme-md-add-vignettes-to-vignettes-folder">7. Edit README.md, add vignettes to vignettes folder<a class="anchor" aria-label="anchor" href="#edit-readme-md-add-vignettes-to-vignettes-folder"></a>
-</h3>
-<p>Edit the README.md. and add one or more Rmd vignettes that will constitute the workshop materials. It is normal R package that should pass rcmdcheck::rcmdcheck(), and be installed using regular R package install commands.</p>
+<p>Edit the README.md. and add one or more Rmd vignettes that will constitute the workshop materials. It is normal R package that should pass <code><a href="http://r-lib.github.io/rcmdcheck/reference/rcmdcheck.html" class="external-link">rcmdcheck::rcmdcheck()</a></code>, and be installed using regular R package install commands.</p>
 </div>
 </div>
 <div class="footnotes">
