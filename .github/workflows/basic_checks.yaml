@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 env:
   cache-version: v1
-  repo-name: seandavi/buildabiocworkshop
 
 jobs:
   r-build-and-check:
@@ -84,6 +83,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        
+      - name: Set Environment Variables
+        run: |
+          IMG=kontarion
+          OWNER_LOWER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+          REPO_LOWER="$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')"
+          echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+          echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
+          echo "REGISTRY=ghcr.io" >> $GITHUB_ENV
+          echo "IMAGE_NAME=${IMG}/${OWNER_LOWER}" >> $GITHUB_ENV
+          echo "IMAGE=${REGISTRY}/${OWNER_LOWER}/${REPO_LOWER}
+          
+      - name: Show environment
+        run: |
+          env
+
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -114,7 +129,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.IMAGE_NAME }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
