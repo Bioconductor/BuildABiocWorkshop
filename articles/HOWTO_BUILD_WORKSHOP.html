@@ -43,7 +43,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -79,7 +79,8 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How To Build A Workshop Package</h1>
-            <h3 data-toc-skip class="subtitle">In other words, how do I use what’s here</h3>
+            <h3 data-toc-skip class="subtitle">In other words, how do I
+use what’s here</h3>
                         <h4 data-toc-skip class="author">Sean Davis<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
 </h4>
             
@@ -91,14 +92,16 @@
 
     
     
-<p>First, this package doesn’t do much except add a template Github Action to build all the pieces necessary for a workshop.</p>
+<p>First, this package doesn’t do much except add a template Github
+Action to build all the pieces necessary for a workshop.</p>
 <div class="section level2">
 <h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
 </h2>
 <ul class="task-list">
 <li>
 <input type="checkbox" disabled>
-Create a repo from this template and rename it (do not fork the repository).</li>
+Create a repo from this template and rename it (do not fork the
+repository).</li>
 <li>
 <input type="checkbox" disabled>
 Edit <code>DESCRIPTION</code> file<ul class="task-list">
@@ -121,19 +124,23 @@ Change DockerImage tag</li>
 </li>
 <li>
 <input type="checkbox" disabled>
-Edit ’_pkgdown.yml’ (and <code>.github/workflows yaml file</code> as needed)</li>
+Edit ’_pkgdown.yml’ (and <code>.github/workflows yaml file</code> as
+needed)</li>
 <li>
 <input type="checkbox" disabled>
 Write a normal R package that can be installed</li>
 <li>
 <input type="checkbox" disabled>
-Include one or more vignettes that will constitute the workshop materials</li>
+Include one or more vignettes that will constitute the workshop
+materials</li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
 </h2>
-<p>To accomplish this follow each of the 7 steps below. Once your edit the yaml files, Github actions will run each time you commit to github and will create for you:</p>
+<p>To accomplish this follow each of the 7 steps below. Once your edit
+the yaml files, Github actions will run each time you commit to github
+and will create for you:</p>
 <ul>
 <li>the pkgdown website</li>
 <li>the docker image</li>
@@ -149,40 +156,66 @@ Include one or more vignettes that will constitute the workshop materials</li>
 <h3 id="edit-description-file">2. Edit <code>DESCRIPTION</code> file<a class="anchor" aria-label="anchor" href="#edit-description-file"></a>
 </h3>
 <ul>
-<li>Change the package name to something identifiable and descriptive, ideally something that will be somewhat unique.</li>
+<li>Change the package name to something identifiable and descriptive,
+ideally something that will be somewhat unique.</li>
 <li>Edit the title and description as per any normal R package.</li>
-<li>Update authors (unless you want me to get credit for your work).</li>
-<li>Workshop packages are normal R packages, so dependencies work as usual. Append libraries to the Depends/Suggests/Imports in this package DESCRIPTION File, which includes;</li>
+<li>Update authors (unless you want me to get credit for your
+work).</li>
+<li>Workshop packages are normal R packages, so dependencies work as
+usual. Append libraries to the Depends/Suggests/Imports in this package
+DESCRIPTION File, which includes;</li>
 </ul>
-<p>Depends: Biobase Suggests: knitr, rmarkdown, pkgdown If your packages depend on a github R repos, be sure to specify the correct repo <code>username/reponame</code>. Installation will deal with this.</p>
+<p>Depends: Biobase Suggests: knitr, rmarkdown, pkgdown If your packages
+depend on a github R repos, be sure to specify the correct repo
+<code>username/reponame</code>. Installation will deal with this.</p>
 <ul>
-<li>Edit the last 3 lines of the DESCRIPTION FILE, URL, BugReports and DockerImage (described in more detail below)</li>
+<li>Edit the last 3 lines of the DESCRIPTION FILE, URL, BugReports and
+DockerImage (described in more detail below)</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="set-up-a-website-github-pages">3. Set up a website (Github Pages)<a class="anchor" aria-label="anchor" href="#set-up-a-website-github-pages"></a>
 </h3>
-<p>In your repository, click on settings or url <a href="https://github.com/" class="external-link uri">https://github.com/</a><github username>/<workshop repos name>/settings. Midway down the page, in the GitHub Pages section, select source ‘gh-pages branch’. If only ‘master branch’ is visible, select master for now, but once Github actions runs, ‘gh-pages branch’ will be available and is required to render the website.</workshop></github></p>
-<p>In the DESCRIPTION file, update the URL: to the website url eg <a href="https://seandavi.github.io/BuildABiocWorkshop/" class="uri">https://seandavi.github.io/BuildABiocWorkshop/</a> (but substitute your own repo, etc.)</p>
+<p>In your repository, click on settings or url <a href="https://github.com/" class="external-link uri">https://github.com/</a><github username>/<workshop repos name>/settings.
+Midway down the page, in the GitHub Pages section, select source
+‘gh-pages branch’. If only ‘master branch’ is visible, select master for
+now, but once Github actions runs, ‘gh-pages branch’ will be available
+and is required to render the website.</workshop></github></p>
+<p>In the DESCRIPTION file, update the URL: to the website url eg <a href="https://seandavi.github.io/BuildABiocWorkshop/" class="uri">https://seandavi.github.io/BuildABiocWorkshop/</a> (but
+substitute your own repo, etc.)</p>
 </div>
 <div class="section level3">
 <h3 id="edit-_pkgdown-yml">4. Edit _pkgdown.yml<a class="anchor" aria-label="anchor" href="#edit-_pkgdown-yml"></a>
 </h3>
-<p>Edit the file _pkgdown.yml, updating the url:, title and href: which should be your website url, title of your workshop and github repos url respectively. You do not need to edit this file further. You do not need to add menus or links to vignettes. GitHub Actions and pkgdown will do this when it builds the website</p>
+<p>Edit the file _pkgdown.yml, updating the url:, title and href: which
+should be your website url, title of your workshop and github repos url
+respectively. You do not need to edit this file further. You do not need
+to add menus or links to vignettes. GitHub Actions and pkgdown will do
+this when it builds the website</p>
 </div>
 <div class="section level3">
-<h3 id="edit--githubworkflows-yaml-as-needed-likely-no-need">5. Edit <code>.github/workflows yaml</code> as needed (likely no need)<a class="anchor" aria-label="anchor" href="#edit--githubworkflows-yaml-as-needed-likely-no-need"></a>
+<h3 id="edit--githubworkflows-yaml-as-needed-likely-no-need">5. Edit <code>.github/workflows yaml</code> as needed (likely no
+need)<a class="anchor" aria-label="anchor" href="#edit--githubworkflows-yaml-as-needed-likely-no-need"></a>
 </h3>
-<p>You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yaml files will create, build and push to the Github Container Registry an image with the name (default) <code>ghcr.io/yourgithubuser/yourgithubreponame</code>, all lowercase.</p>
-<p>In the DESCRIPTION file, the <strong>DockerImage: should match your the docker image name (should be lowercase)</strong>.</p>
+<p>You do not need to create a docker image manually. Github actions
+will read Dockerfile located in this template, and using the yaml files
+will create, build and push to the Github Container Registry an image
+with the name (default)
+<code>ghcr.io/yourgithubuser/yourgithubreponame</code>, all
+lowercase.</p>
+<p>In the DESCRIPTION file, the <strong>DockerImage: should match your
+the docker image name (should be lowercase)</strong>.</p>
 </div>
 <div class="section level3">
 <h3 id="edit-readme-md-add-vignettes-to-vignettes-folder">6. Edit README.md, add vignettes to vignettes folder<a class="anchor" aria-label="anchor" href="#edit-readme-md-add-vignettes-to-vignettes-folder"></a>
 </h3>
-<p>Edit the README.md. and add one or more Rmd vignettes that will constitute the workshop materials. It is normal R package that should pass <code><a href="http://r-lib.github.io/rcmdcheck/reference/rcmdcheck.html" class="external-link">rcmdcheck::rcmdcheck()</a></code>, and be installed using regular R package install commands.</p>
+<p>Edit the README.md. and add one or more Rmd vignettes that will
+constitute the workshop materials. It is normal R package that should
+pass <code><a href="http://r-lib.github.io/rcmdcheck/reference/rcmdcheck.html" class="external-link">rcmdcheck::rcmdcheck()</a></code>, and be installed using regular
+R package install commands.</p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
 <li id="fn1"><p><a href="mailto:seandavi@gmail.com" class="email">seandavi@gmail.com</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
@@ -207,7 +240,7 @@ Include one or more vignettes that will constitute the workshop materials</li>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
