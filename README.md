@@ -33,7 +33,7 @@ For detailed instructions, see the `How to build a workshop` article/vignette.
 ```sh
 docker run -e PASSWORD=<choose_a_password_for_rstudio> -p 8787:8787 YOURDOCKERIMAGENAME
 ```
-Once running, navigate to https://localhost:8787/ and then login with `rstudio`:`yourchosenpassword`. 
+Once running, navigate to http://localhost:8787/ and then login with `rstudio`:`yourchosenpassword`. 
 
 To try with **this** repository docker image:
 
