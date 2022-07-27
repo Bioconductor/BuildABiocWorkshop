@@ -61,7 +61,7 @@ Suggests:
 
 ### 3. Set up a website (Github Pages)
 
-In your repository, click on settings or url https://github.com/<github username>/<workshop repos name>/settings.  Midway down the page, in the GitHub Pages section, select source 'gh-pages branch'.  If only 'master branch' is visible, select master for now, but once Github actions runs, 'gh-pages branch' will be available and is required to render the website. 
+In your repository, click on settings or url https://github.com/*GITHUB_USERNAME*/*REPO_NAME*/settings.  Midway down the page, in the GitHub Pages section, select source 'gh-pages branch'.  If only 'master branch' is visible, select master for now, but once Github actions runs, 'gh-pages branch' will be available and is required to render the website. 
   
 In the DESCRIPTION file, update the URL: to the website url eg https://seandavi.github.io/BuildABiocWorkshop/ (but substitute your own repo, etc.)
 
