@@ -38,7 +38,7 @@ Once running, navigate to http://localhost:8787/ and then login with `rstudio`:`
 To try with **this** repository docker image:
 
 ```sh
-docker run -e PASSWORD=abc -p 8787:8787 ghcr.io/seandavi/buildabiocworkshop
+docker run -e PASSWORD=abc -p 8787:8787 ghcr.io/bioconductor/buildabiocworkshop
 ```
 
 *NOTE*: Running docker that uses the password in plain text like above exposes the password to others 
@@ -48,5 +48,5 @@ variable instead of plain text to pass along passwords and other secrets in dock
 
 ## Whatcha get
 
-- https://seandavi.github.io/BuildABiocWorkshop
+- https://bioconductor.github.io/BuildABiocWorkshop
 - A Docker image that you can run locally, in the cloud, or (usually) even as a singularity container on HPC systems. 
