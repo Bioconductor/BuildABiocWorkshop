@@ -125,7 +125,6 @@ jobs:
   deploy:
     needs: r-build-and-check
     permissions:
-      contents: write
       pages: write
       id-token: write
     runs-on: ubuntu-24.04
