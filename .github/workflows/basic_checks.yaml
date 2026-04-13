@@ -51,18 +51,10 @@ jobs:
         run: |
            PATH=$PATH:$HOME/bin/ Rscript -e 'pkgdown::build_site(".")'
 
-      # deploy needs rsync? Seems so.
-      - name: Install deploy dependencies
-        run: |
-          apt-get update
-          apt-get -y install rsync
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload pkgdown artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: docs # The folder the action should deploy.
+          path: docs
 
   docker-build-and-push:
     #needs: r-build-and-check
@@ -129,3 +121,15 @@ jobs:
           tags: |
             ${{ env.IMAGE }}:latest
             ${{ env.IMAGE }}:${{ env.GIT_SHA }}
+
+  deploy:
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
