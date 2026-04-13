@@ -13,7 +13,7 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: TRUE
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      CRAN: https://packagemanager.posit.co/cran/__linux__/jammy/latest
+      CRAN: https://packagemanager.posit.co/cran/__linux__/noble/latest
 
     steps:
       - name: Checkout Repository
