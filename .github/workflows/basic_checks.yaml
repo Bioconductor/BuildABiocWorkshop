@@ -123,6 +123,7 @@ jobs:
             ${{ env.IMAGE }}:${{ env.GIT_SHA }}
 
   deploy:
+    needs: r-build-and-check
     permissions:
       contents: write
       pages: write
