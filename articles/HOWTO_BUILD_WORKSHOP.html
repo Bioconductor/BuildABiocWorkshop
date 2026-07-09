@@ -84,7 +84,7 @@ use what’s here</h3>
 </h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop/blob/devel/vignettes/HOWTO_BUILD_WORKSHOP.Rmd" class="external-link"><code>vignettes/HOWTO_BUILD_WORKSHOP.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop/blob/copilot/create-dockerfile-positron/vignettes/HOWTO_BUILD_WORKSHOP.Rmd" class="external-link"><code>vignettes/HOWTO_BUILD_WORKSHOP.Rmd</code></a></small>
       <div class="hidden name"><code>HOWTO_BUILD_WORKSHOP.Rmd</code></div>
 
     </div>
@@ -189,11 +189,16 @@ this when it builds the website</p>
 need)<a class="anchor" aria-label="anchor" href="#edit--githubworkflows-yaml-as-needed-likely-no-need"></a>
 </h3>
 <p>You do not need to create a docker image manually. Github actions
-will read Dockerfile located in this template, and using the yaml files
-will create, build and push to the Github Container Registry an image
-with the name (default)
+will read <code>Dockerfile</code> located in this template, and using
+the yaml files will create, build and push to the Github Container
+Registry an image with the name (default)
 <code>ghcr.io/yourgithubuser/yourgithubreponame</code>, all
 lowercase.</p>
+<p>If you want a Positron-oriented alternative, this template also ships
+with <code>Dockerfile.positron</code>. Build that variant explicitly
+with <code>docker build -f Dockerfile.positron .</code>; it starts
+<code>sshd</code> so that a locally installed Positron client can attach
+with Remote SSH instead of using RStudio Server in the browser.</p>
 <p>In the DESCRIPTION file, the <strong>DockerImage: should match your
 the docker image name (should be lowercase)</strong>.</p>
 </div>
@@ -229,7 +234,7 @@ R package install commands.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>
