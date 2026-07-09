@@ -1,6 +1,7 @@
 ^LICENSE\.md$
 .github
 Dockerfile
+Dockerfile\.positron
 _pkgdown.yml
 ^.*\.Rproj$
 ^\.Rproj\.user$

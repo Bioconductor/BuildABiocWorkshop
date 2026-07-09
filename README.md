@@ -45,6 +45,21 @@ docker run -e PASSWORD=abc -p 8787:8787 ghcr.io/bioconductor/buildabiocworkshop
 in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment 
 variable instead of plain text to pass along passwords and other secrets in docker command lines. 
 
+## Alternative: connect from Positron over SSH
+
+This repository also includes `Dockerfile.positron`, which keeps the Bioconductor
+base image and package installation steps but starts an SSH server instead of
+RStudio Server. Build it explicitly with:
+
+```sh
+docker build -f Dockerfile.positron -t buildabiocworkshop-positron .
+export PASSWORD='choose-a-password'
+docker run --rm --env PASSWORD -p 2222:22 buildabiocworkshop-positron
+```
+
+Then connect to `ssh://rstudio@localhost:2222` from a local Positron install
+using the same password you supplied in `PASSWORD`.
+
 
 ## Whatcha get
 

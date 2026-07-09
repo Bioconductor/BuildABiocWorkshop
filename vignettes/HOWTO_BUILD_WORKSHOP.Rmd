@@ -72,7 +72,9 @@ Edit the file _pkgdown.yml, updating the url:, title and href: which should be y
 ### 5. Edit `.github/workflows yaml` as needed (likely no need)
 
 
-You do not need to create a docker image manually. Github actions will read Dockerfile located in this template, and using the yaml files will create, build and push to the Github Container Registry an image with the name (default) `ghcr.io/yourgithubuser/yourgithubreponame`, all lowercase. 
+You do not need to create a docker image manually. Github actions will read `Dockerfile` located in this template, and using the yaml files will create, build and push to the Github Container Registry an image with the name (default) `ghcr.io/yourgithubuser/yourgithubreponame`, all lowercase.
+
+If you want a Positron-oriented alternative, this template also ships with `Dockerfile.positron`. Build that variant explicitly with `docker build -f Dockerfile.positron .`; it starts `sshd` so that a locally installed Positron client can attach with Remote SSH instead of using RStudio Server in the browser.
 
 
 In the DESCRIPTION file, the **DockerImage: should match your the docker image name (should be lowercase)**.
@@ -81,5 +83,4 @@ In the DESCRIPTION file, the **DockerImage: should match your the docker image n
 ### 6. Edit README.md, add vignettes to vignettes folder
   
 Edit the README.md. and add one or more Rmd vignettes that will constitute the workshop materials. It is normal R package that should pass `rcmdcheck::rcmdcheck()`, and be installed using regular R package install commands.  
-
 
