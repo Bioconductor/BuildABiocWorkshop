@@ -25,6 +25,7 @@ build all the pieces necessary for a workshop.
 - [ ] Edit '_pkgdown.yml' (and `.github/workflows yaml file` as needed)
 - [ ] Write a normal R package that can be installed
 - [ ] Include one or more vignettes that will constitute the workshop materials
+- [ ] **After the first CI push: [make your GHCR Docker image public](#️⚠️-critical-make-your-docker-image-public-after-the-first-push)** (it is private by default!)
 
 ## Details
 
@@ -77,6 +78,48 @@ You do not need to create a docker image manually. Github actions will read Dock
 
 In the DESCRIPTION file, the **DockerImage: should match your the docker image name (should be lowercase)**.
 
+### ⚠️ CRITICAL: Make Your Docker Image Public After the First Push
+
+> **Your Docker image will be PRIVATE by default on GHCR — and that will break your workshop.**
+>
+> GitHub Container Registry automatically sets all newly published packages to **private**
+> visibility. Workshop attendees, organizers, and automated systems will receive an
+> authentication error when trying to `docker pull` your image until you manually change the
+> visibility to **public**. **This step is easy to miss and will silently break your workshop
+> for everyone.**
+>
+> This cannot be automated in the CI workflow here because changing package visibility requires
+> owner-level permissions beyond what the `GITHUB_TOKEN` can do.
+
+**After GitHub Actions successfully pushes your image for the first time, do the following:**
+
+1. Go to your GitHub profile (or organization) page
+2. Click the **Packages** tab
+3. Click on the package with your repository name
+4. Click **"Package settings"** (lower right of the page)
+5. Scroll to the **"Danger Zone"** section
+6. Click **"Change visibility"** → select **Public** → confirm
+
+You can also navigate directly to the settings URL:
+
+```
+# For user accounts:
+https://github.com/users/YOUR_USERNAME/packages/container/YOUR_REPO_NAME/settings
+
+# For organization accounts:
+https://github.com/orgs/YOUR_ORG/packages/container/YOUR_REPO_NAME/settings
+```
+
+**Why does this matter?**  Bioconductor workshops must be open and reproducible. Attendees
+need to `docker pull` your image without a GitHub account or any credentials. A private image
+breaks this completely and without an obvious error message. **Always verify your image is
+public before advertising or scheduling your workshop.**
+
+**Relevant documentation:**
+
+- [Configuring a package's access control and visibility](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
+- [Working with the Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+- [Connecting a repository to a package](https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package)
 
 ### 6. Edit README.md, add vignettes to vignettes folder
   
