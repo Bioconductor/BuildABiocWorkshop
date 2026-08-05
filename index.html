@@ -115,22 +115,54 @@
 </ul>
 </div>
 <div class="section level2">
-<h2 id="to-use-the-resulting-image">To use the resulting image:<a class="anchor" aria-label="anchor" href="#to-use-the-resulting-image"></a>
+<h2 id="warning-important-make-your-docker-image-public-on-ghcr">⚠️ IMPORTANT: Make Your Docker Image Public on GHCR<a class="anchor" aria-label="anchor" href="#warning-important-make-your-docker-image-public-on-ghcr"></a>
 </h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=<span class="op">&lt;</span>choose_a_password_for_rstudio<span class="op">&gt;</span> -p 8787:8787 YOURDOCKERIMAGENAME</span></code></pre></div>
-<p>Once running, navigate to <a href="http://localhost:8787/" class="external-link uri">http://localhost:8787/</a> and then login with <code>rstudio</code>:<code>yourchosenpassword</code>.</p>
-<p>To try with <strong>this</strong> repository docker image:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=abc <span class="at">-p</span> 8787:8787 ghcr.io/bioconductor/buildabiocworkshop</span></code></pre></div>
-<p><em>NOTE</em>: Running docker that uses the password in plain text like above exposes the password to others in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment variable instead of plain text to pass along passwords and other secrets in docker command lines.</p>
+<blockquote>
+<p><strong>Your workshop Docker image will NOT be publicly accessible by default.</strong></p>
+<p>GitHub Container Registry (GHCR) sets all newly pushed packages to <strong>private</strong> visibility automatically. This means that anyone trying to pull your workshop image — attendees, workshop organizers, automated systems — <strong>will get an authentication error</strong> unless you explicitly change the visibility to <strong>public</strong>.</p>
+<p>This is a manual step that <strong>cannot be automated</strong> through the GitHub Actions workflow in this template, because changing package visibility requires owner-level permissions that exceed what the <code>GITHUB_TOKEN</code> secret can provide.</p>
+</blockquote>
+<div class="section level3">
+<h3 id="how-to-make-your-image-public">How to make your image public<a class="anchor" aria-label="anchor" href="#how-to-make-your-image-public"></a>
+</h3>
+<p>After GitHub Actions successfully pushes your Docker image for the first time:</p>
+<ol style="list-style-type: decimal">
+<li>Go to your GitHub profile or organization page</li>
+<li>Click the <strong>“Packages”</strong> tab</li>
+<li>Find your workshop package (it will be named after your repository)</li>
+<li>Click the package name to open it</li>
+<li>Click <strong>“Package settings”</strong> (bottom right of the package page)</li>
+<li>Scroll down to the <strong>“Danger Zone”</strong> section</li>
+<li>Click <strong>“Change visibility”</strong> → select <strong>Public</strong> → confirm</li>
+</ol>
+<p>Alternatively, navigate directly to:</p>
+<pre><code>https://github.com/users/YOUR_USERNAME/packages/container/YOUR_REPO_NAME/settings</code></pre>
+<p>(or for organizations: <code>https://github.com/orgs/YOUR_ORG/packages/container/YOUR_REPO_NAME/settings</code>)</p>
+</div>
+<div class="section level3">
+<h3 id="why-does-this-matter">Why does this matter?<a class="anchor" aria-label="anchor" href="#why-does-this-matter"></a>
+</h3>
+<p>Bioconductor workshops are meant to be open and reproducible. Attendees need to be able to <code>docker pull</code> your image <strong>without</strong> a GitHub account or any authentication. A private image silently breaks this for everyone. <strong>Make the image public before advertising your workshop.</strong></p>
+</div>
+<div class="section level3">
+<h3 id="relevant-documentation">Relevant documentation<a class="anchor" aria-label="anchor" href="#relevant-documentation"></a>
+</h3>
+<ul>
+<li><a href="https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility" class="external-link">GitHub Docs: Configuring a package’s access control and visibility</a></li>
+<li><a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry" class="external-link">GitHub Docs: Working with the Container Registry</a></li>
+<li><a href="https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package" class="external-link">GitHub Docs: Connecting a repository to a package</a></li>
+</ul>
+<hr>
+</div>
 </div>
 <div class="section level2">
-<h2 id="alternative-connect-from-positron-over-ssh">Alternative: connect from Positron over SSH<a class="anchor" aria-label="anchor" href="#alternative-connect-from-positron-over-ssh"></a>
+<h2 id="to-use-the-resulting-image">To use the resulting image:<a class="anchor" aria-label="anchor" href="#to-use-the-resulting-image"></a>
 </h2>
-<p>This repository also includes <code>Dockerfile.positron</code>, which keeps the Bioconductor base image and package installation steps but starts an SSH server instead of RStudio Server. Build it explicitly with:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-f</span> Dockerfile.positron <span class="at">-t</span> buildabiocworkshop-positron .</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="bu">export</span> <span class="va">PASSWORD</span><span class="op">=</span><span class="st">'choose-a-password'</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--env</span> PASSWORD <span class="at">-p</span> 2222:22 buildabiocworkshop-positron</span></code></pre></div>
-<p>Then connect to <code>ssh://rstudio@localhost:2222</code> from a local Positron install using the same password you supplied in <code>PASSWORD</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=<span class="op">&lt;</span>choose_a_password_for_rstudio<span class="op">&gt;</span> -p 8787:8787 YOURDOCKERIMAGENAME</span></code></pre></div>
+<p>Once running, navigate to <a href="http://localhost:8787/" class="external-link uri">http://localhost:8787/</a> and then login with <code>rstudio</code>:<code>yourchosenpassword</code>.</p>
+<p>To try with <strong>this</strong> repository docker image:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=abc <span class="at">-p</span> 8787:8787 ghcr.io/bioconductor/buildabiocworkshop</span></code></pre></div>
+<p><em>NOTE</em>: Running docker that uses the password in plain text like above exposes the password to others in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment variable instead of plain text to pass along passwords and other secrets in docker command lines.</p>
 </div>
 <div class="section level2">
 <h2 id="whatcha-get">Whatcha get<a class="anchor" aria-label="anchor" href="#whatcha-get"></a>

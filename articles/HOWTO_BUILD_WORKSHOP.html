@@ -84,7 +84,7 @@ use what’s here</h3>
 </h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop/blob/copilot/create-dockerfile-positron/vignettes/HOWTO_BUILD_WORKSHOP.Rmd" class="external-link"><code>vignettes/HOWTO_BUILD_WORKSHOP.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/seandavi/BuildABiocWorkshop/blob/copilot/add-documentation-for-docker-setup/vignettes/HOWTO_BUILD_WORKSHOP.Rmd" class="external-link"><code>vignettes/HOWTO_BUILD_WORKSHOP.Rmd</code></a></small>
       <div class="hidden name"><code>HOWTO_BUILD_WORKSHOP.Rmd</code></div>
 
     </div>
@@ -124,6 +124,9 @@ description</label></li>
 installed</label></li>
 <li><label><input type="checkbox">Include one or more vignettes that
 will constitute the workshop materials</label></li>
+<li><label><input type="checkbox"><strong>After the first CI push: <a href="#id_%EF%B8%8F%E2%9A%A0%EF%B8%8F-critical-make-your-docker-image-public-after-the-first-push">make
+your GHCR Docker image public</a></strong> (it is private by
+default!)</label></li>
 </ul>
 </div>
 <div class="section level2">
@@ -189,18 +192,64 @@ this when it builds the website</p>
 need)<a class="anchor" aria-label="anchor" href="#edit--githubworkflows-yaml-as-needed-likely-no-need"></a>
 </h3>
 <p>You do not need to create a docker image manually. Github actions
-will read <code>Dockerfile</code> located in this template, and using
-the yaml files will create, build and push to the Github Container
-Registry an image with the name (default)
+will read Dockerfile located in this template, and using the yaml files
+will create, build and push to the Github Container Registry an image
+with the name (default)
 <code>ghcr.io/yourgithubuser/yourgithubreponame</code>, all
 lowercase.</p>
-<p>If you want a Positron-oriented alternative, this template also ships
-with <code>Dockerfile.positron</code>. Build that variant explicitly
-with <code>docker build -f Dockerfile.positron .</code>; it starts
-<code>sshd</code> so that a locally installed Positron client can attach
-with Remote SSH instead of using RStudio Server in the browser.</p>
 <p>In the DESCRIPTION file, the <strong>DockerImage: should match your
 the docker image name (should be lowercase)</strong>.</p>
+</div>
+<div class="section level3">
+<h3 id="critical-make-your-docker-image-public-after-the-first-push">⚠️ CRITICAL: Make Your Docker Image Public After the First Push<a class="anchor" aria-label="anchor" href="#critical-make-your-docker-image-public-after-the-first-push"></a>
+</h3>
+<blockquote>
+<p><strong>Your Docker image will be PRIVATE by default on GHCR — and
+that will break your workshop.</strong></p>
+<p>GitHub Container Registry automatically sets all newly published
+packages to <strong>private</strong> visibility. Workshop attendees,
+organizers, and automated systems will receive an authentication error
+when trying to <code>docker pull</code> your image until you manually
+change the visibility to <strong>public</strong>. <strong>This step is
+easy to miss and will silently break your workshop for
+everyone.</strong></p>
+<p>This cannot be automated in the CI workflow here because changing
+package visibility requires owner-level permissions beyond what the
+<code>GITHUB_TOKEN</code> can do.</p>
+</blockquote>
+<p><strong>After GitHub Actions successfully pushes your image for the
+first time, do the following:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Go to your GitHub profile (or organization) page</li>
+<li>Click the <strong>Packages</strong> tab</li>
+<li>Click on the package with your repository name</li>
+<li>Click <strong>“Package settings”</strong> (lower right of the
+page)</li>
+<li>Scroll to the <strong>“Danger Zone”</strong> section</li>
+<li>Click <strong>“Change visibility”</strong> → select
+<strong>Public</strong> → confirm</li>
+</ol>
+<p>You can also navigate directly to the settings URL:</p>
+<pre><code># For user accounts:
+https://github.com/users/YOUR_USERNAME/packages/container/YOUR_REPO_NAME/settings
+
+# For organization accounts:
+https://github.com/orgs/YOUR_ORG/packages/container/YOUR_REPO_NAME/settings</code></pre>
+<p><strong>Why does this matter?</strong> Bioconductor workshops must be
+open and reproducible. Attendees need to <code>docker pull</code> your
+image without a GitHub account or any credentials. A private image
+breaks this completely and without an obvious error message.
+<strong>Always verify your image is public before advertising or
+scheduling your workshop.</strong></p>
+<p><strong>Relevant documentation:</strong></p>
+<ul>
+<li><a href="https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility" class="external-link">Configuring
+a package’s access control and visibility</a></li>
+<li><a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry" class="external-link">Working
+with the Container Registry</a></li>
+<li><a href="https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package" class="external-link">Connecting
+a repository to a package</a></li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="edit-readme-md-add-vignettes-to-vignettes-folder">6. Edit README.md, add vignettes to vignettes folder<a class="anchor" aria-label="anchor" href="#edit-readme-md-add-vignettes-to-vignettes-folder"></a>
